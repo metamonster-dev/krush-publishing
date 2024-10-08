@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+/*===== FONTS =====*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+@font-face {
+  font-family: 'Jalnan';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JalnanGothic';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*===== INITIALIZATION =====*/
+html{font-size:10px;}
+body{font-family: 'SUIT', sans-serif; font-size:1.6rem; color:#000; font-weight:400;}
+html, body, h1, h2, h3, h4, h5, h6, p, form, fieldset, img{margin:0; padding:0; border:0;}
+ol, ul, dl, dt, dd, button, input, select, textarea{margin:0; padding:0;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display:block;}
+legend{position:absolute; margin:0; padding:0; font-size:0; line-height:0; text-indent:-9999em; overflow:hidden;}
+hr{display:none;}
+ol, ul, dl, dt, dd{list-style:none;}
+label, input, button, select, img{vertical-align:middle;}
+button, input, select, textarea, label{font-family:'SUIT', sans-serif; margin:0;}
+button, input[type="submit"]{cursor:pointer;}
+button:disabled{cursor:default;}
+input[type="text"], input[type="password"], textarea{transition:all 0.3s ease-in-out; -webkit-transition:all 0.3s ease-in-out; -moz-transition:all 0.3s ease-in-out; -ms-transition:all 0.3s ease-in-out; -o-transition:all 0.3s ease-in-out; outline:none;}
+input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus, .btn:focus{box-shadow:none; outline:none;}
+input::-webkit-input-placeholder, input:-ms-input-placeholder{color:#aaa !important;}
+textarea::-webkit-input-placeholder, textarea:-ms-input-placeholder{color:#9EA0B9 !important;}
+button{display:block; border:0; background-color:transparent; appearance:none; -moz-appearance:none; -webkit-appearance:none; border-radius:0; -webkit-border-radius:0; -moz-border-radius:0;}
+a{color:#000; text-decoration:none;}
+a:hover{color:#000; text-decoration:none;}
+button, a, button:hover, a:hover{transition:all 0.1s linear; -webkit-transition:all 0.1s linear; -moz-transition:all 0.1s linear; -ms-transition:all 0.1s linear; -o-transition:all 0.1s linear;}
+p{word-break:break-all;}
+img{display:block; max-width:100%; height:auto;}
+*, :after, :before{box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}
+
+.jalnan {font-family: 'Jalnan';}
+.jalnanGothic {font-family: 'JalnanGothic';}
+
+.inner {position: relative; width: 100%; max-width: 840px; margin: 0 auto; padding: 0 50px;}
+.inner.no_pd {padding: 0;}
+
+@media (max-width: 767px) {
+  .inner {padding: 0 16px;}
+}
