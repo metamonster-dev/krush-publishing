@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /*===== FOOTER =====*/
-footer {padding: 90px 0 110px; background-color: #20253d; text-align: center;}
+footer {padding: 90px 0 200px; background-color: #20253d; text-align: center;}
 footer img {margin: 0 auto;}
 footer ul.links {display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: 60px;}
 footer ul.links li a {display: block; font-size: 24px; color: #fff; }
@@ -12,12 +12,17 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 
 /*===== SECTIONS =====*/
 .full_bg {background: url('../img/bg.jpg') no-repeat top center / cover; overflow: hidden;}
-.deco_img {position: absolute;}
+.bg01 {background: url('../img/bg01.png') no-repeat center / cover;}
+.bg02 {background: url('../img/bg02.png') no-repeat center / cover;}
+.bg03 {background: url('../img/bg03.png') no-repeat center / cover;}
+.bg04 {background: url('../img/bg04.png') no-repeat center / cover;}
+.deco_img {position: absolute; z-index: -1;}
 
 /* title */
-.tit_area {display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 24px; text-align: center;}
-.tit_area h2 {font-size: 63px; color: #fff; line-height: 1.2; letter-spacing: -0.4rem; word-break: keep-all;}
-.tit_area p {font-size: 25px; color: #fff; font-weight: 500; line-height: 1.5; word-break: keep-all;}
+.tit_area {display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px; text-align: center;}
+.tit_area h2 {font-size: 63px; color: #fff; line-height: 1.2; word-break: keep-all;}
+.tit_area h2.ls {letter-spacing: -0.4rem;}
+.tit_area p {font-size: 30px; color: #fff; font-weight: 500; line-height: 1.5; word-break: keep-all;}
 
 /* button */
 .btn {position: relative; display: inline-block; border-radius: 135px; box-shadow: 25px 25px 73px rgba(0, 32, 81, 0.8); z-index: 2;}
@@ -28,11 +33,12 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .btn_type02 button {padding: 0 70px; background: linear-gradient(0deg, #91d9ff, #ffffff);}
 .btn_type02 button i {display: block; width: 40px; height: 40px; background: url('../img/icon_reset.png') no-repeat center / contain;}
 .btn_type03 {width: 80%; max-width: 434px;}
-.btn_type03 button {width: 100%; background: linear-gradient(0deg, #034ae2, #0866fa); color: #ffffff;}
-.btn_type03 button i {display: block; width: 46px; height: 40px; background: url('../img/icon_game.png') no-repeat center / contain;}
+.btn_type03 button {width: 100%; border-color: #5c0905; background: linear-gradient(0deg, #d33901, #f86c04); font-size: 42px; color: #ffffff; letter-spacing: 0;}
+.btn_type03 button i {display: block; width: 61px; height: 45px; background: url('../img/icon_game.png') no-repeat center / contain;}
+.btn_type03::before {border-color: #5c0905; background: linear-gradient(0deg, #8e300b, #ffffff);}
 
 /* step */
-.step_area {margin: -10px 0;}
+.step_area {margin: -25px 0;}
 .step_area ul {display: flex; align-items: center; justify-content: center; text-align: center;}
 .step_area ul li {position: relative; z-index: 2;}
 .step_area ul li p {display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; width: 250px; height: 320px; padding-top: 10px; background: url('../img/sec02_step_off.png') no-repeat center / contain; font-size: 20px; color: #096bff;}
@@ -41,45 +47,75 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .step_area ul li:not(:last-of-type)::before {content: ''; position: absolute; top: calc(50% - 1.5px); right: 30px; width: 30px; height: 3px; background-color: #003f9f; z-index: -1;}
 .step_area ul li.on p {background-image: url('../img/sec02_step_on.png');}
 
+/* SECTION 01 */
+.d01 {top: 10%; left: 5%; width: 8.215%;}
+.d02 {top: 7%; right: -15%; width: 39%;}
+.d03 {top: -2%; left: 4%; width: 16.894%;}
+.d04 {top: 35%; right: 5%; width: 17.703%; z-index: 6;}
 .section01 {padding: 156px 0 0; text-align: center;}
 .section01 img {margin: 0 auto;}
-.section01 h3 {margin-top: 30px; font-size: 27px; color: #fff; line-height: 1.4;}
-.section01 .img_area {margin-top: 90px;}
-.section01 .img_area img {max-width: 138%; margin-left: -14%; margin-bottom: -20px;}
+.section01 h3 {margin-top: 30px; font-size: 27px; color: #fff; line-height: 1.4; word-break: keep-all;}
+.section01 .img_area {position: relative; margin-top: 90px;}
+.section01 .img_area img {max-width: 140%; margin-left: -15%; margin-bottom: -20px;}
 
+/* SECTION 02 */
+.d05 {top: -6%; right: 0; width: 16.894%;}
+.d06 {bottom: 0; left: -2%; width: 17.704%;}
+.d07 {bottom: -78%; left: -19%; width: 44.19%;}
+.section02 {position: relative; z-index: 1;}
 .section02 .fortune_area {text-align: center;}
-.section02 .fortune_area h3 {font-size: 40px; color: #fff; font-weight: 700; line-height: 1.2; letter-spacing: -0.2rem; word-break: keep-all;}
+.section02 .fortune_area h3 {font-size: 55px; color: #fff; font-weight: 700; line-height: 1.2; letter-spacing: -0.2rem; word-break: keep-all;}
 .section02 .fortune_area h3 span {color: #f7ff14;}
-.section02 .fortune_area img {width: 75%; max-width: 568px; margin: 60px auto 40px;}
-.section02 .btn_area p {font-size: 40px; color: #fff; font-weight: 700; text-align: center;}
-.section02 .btn_area ul {display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 20px 10px; margin-top: 60px;}
-.section02 {}
+.section02 .fortune_area .img_area {position: relative; margin: 70px 0 60px; z-index: 2;}
+.section02 .fortune_area .img_area::before {content: ''; position: absolute; top: -8%; left: -24%; width: 140%; height: 100%; background: url('../img/sec02_bg_deco.png') no-repeat center / contain; z-index: -1;}
+.section02 .fortune_area .img_area img {max-width: 568px; margin: 0 auto;}
+.section02 .fortune_area p {font-size: 38px; color: #fff; font-weight: 700; line-height: 1.6; text-align: center;}
+.section02 .text_area {display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 75px;  margin-top: 56px; padding: 25px; border: 1px solid #fff; border-radius: 22px; background-color: rgba(7,17,147,0.4);}
+.section02 .text_area p {font-size: 40px; color: #fff; font-weight: 800;}
+.section02 .text_area .imgs {display: flex; align-items: center; justify-content: center; gap: 40px;}
+.section02 .text_area .imgs img {width: 138px;}
+.section02 .btn_area {position: relative; margin-top: 56px;}
+.section02 .btn_area ul {display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 20px 10px;}
 
-.section03 {padding: 210px 0 170px;}
-.section03 .tit_area {width: calc(100% + 20px);}
-.section03 .game_area {position: relative; width: 100%; padding-bottom: 134%; margin-top: 65px; border-radius: 40px; background-color: #1c2632; overflow: hidden;}
-.section03 .game_area .btn {position: absolute; top: calc(50% - 67.5px); left: 50%; transform: translateX(-50%); -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%);}
-.section03 {}
+/* SECTION 03 */
+.d08 {bottom: -1%; right: -5%; width: 40.137%; z-index: 6;}
+.section03 {padding: 420px 0 100px; margin-top: -190px;}
+.section03 .tit_area {width: calc(100% + 20px); margin: 0 -10px;}
+.section03 .game_area {position: relative; margin-top: -30px; padding: 90px 0 86px; z-index: 2;}
+.section03 .game_area::before {content: ''; position: absolute; top: 0; left: -11%; display: block; width: 150%; height: 100%; background: url('../img/sec03_bg_deco.png') no-repeat center / contain; z-index: -1;}
+.section03 .game_area .img_area {position: relative; width: 100%; padding-bottom: 144.8%; border: 6px solid #fff; border-radius: 40px; background-color: #1c2632; overflow: hidden;}
+.section03 .game_area .img_area img {position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; object-position: center; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%);}
+.section03 .game_area .img_area .btn {position: absolute; top: calc(50% - 67.5px); left: 50%; transform: translateX(-50%); -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%);}
 
-.section04 .img_area img {max-width: 160%; margin-left: -29%;}
-.section04 ul {display: flex; gap: 10px; flex-wrap: wrap;}
-.section04 ul li {width: calc(50% - 5px);}
-.section04 {}
+/* SECTION 04 */
+.section04 .img_area {margin: 80px 0 -320px;}
+.section04 .img_area img {max-width: 150%; margin-left: -1%;}
+.section04 ul {position: relative; display: flex; gap: 8px; flex-wrap: wrap;}
+.section04 ul li {width: calc(50% - 4px);}
 
-.section05 {padding: 180px 0 200px;}
+/* SECTION 05 */
+.d09 {top: -28%; left: 6%; width: 14.882%;}
+.d10 {top: -30%; right: -3%; width: 26.191%;}
+.d11 {bottom: -32%; right: -5%; width: 32.858%;}
+.section05 {padding: 240px 0 205px;}
 .section05 .video_area {position: relative; padding-bottom: 56%; margin-top: 55px; overflow: hidden;}
 .section05 .video_area iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 
-.section06 .img_area {margin-top: 45px;}
-.section06 {}
+/* SECTION 06 */
+.section06 .img_area {margin-top: 10px;}
+.section06 .img_area img {max-width: 140%; margin-left: -19%;}
 
-.section07 {padding :240px 0 210px;}
+/* SECTION 07 */
+.d12 {top: -40%; right: -4%; width: 13.92%;}
+.section07 {padding: 200px 0 222px;}
+.section07 .tit_area {position: relative;}
+.section07 .deco_area {position: relative; z-index: 2;}
+.section07 .deco_area::before {content: ''; position: absolute; top: 8%; left: -13%; width: 121%; height: 101%; background: url('../img/sec07_bg_deco.png') no-repeat center / contain; z-index: -1;}
 .section07 .text_area {display: flex; align-items: center; justify-content: space-between; padding: 24px 45px 24px 30px; margin-top: 55px; border-radius: 19px; background-color: rgba(0,25,107, 0.51); }
 .section07 .text_area p {padding: 4px 25px; border: 1px solid rgba(255,255,255,0.34); border-radius: 17px; font-size: 20px; color: #fff; font-weight: 500;}
 .section07 .text_area span {display: block; font-size: 26px; color: #fff; font-weight: 500;}
 .section07 ul {display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 50px;}
 .section07 ul li {width: calc((100% - 10px * 2) / 3);}
-.section07 {}
 
 
 @media (max-width: 1399px) {
@@ -92,31 +128,65 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 }
 
 @media (max-width: 767px) {
-  footer ul.links {gap: 10px;}
-  footer ul.links li a {font-size: 16px;}
-  footer ul.text {gap: 5px 10px;}
+  footer {padding: 60px 0 90px;}
+  footer img {max-width: 170px;}
+  footer ul.links {gap: 10px; margin-top: 40px;}
+  footer ul.links li a {font-size: 15px;}
+  footer ul.text {gap: 5px 16px; margin-top: 40px;}
   footer ul.text li {font-size: 14px;}
+  footer ul.text li:not(:first-of-type,:last-of-type)::after {top: calc(50% - 5px); right: -9px; height: 10px;}
   
-  .tit_area h2 {font-size: 32px; letter-spacing: 0;}
+  .tit_area {gap: 10px;}
+  .tit_area h2 {font-size: 30px; line-height: 1.4;}
+  .tit_area h2.ls {letter-spacing: 0;}
   .tit_area p {font-size: 16px;}
-  .btn button {height: 80px; font-size: 18px;}
+  .btn button {gap: 5px; height: 80px; border-width: 2px; font-size: 18px; letter-spacing: -0.15rem;}
+  .btn::before {margin-top: 5px; border-width: 2px;}
   .btn_type01 button {padding: 0 20px;}
-  .btn_type02 button {padding: 0 20px;}
+  .btn_type01 button i {width: 20px; height: 20px;}
+  .btn_type02 button {padding: 0 30px;}
+  .btn_type02 button i {width: 20px; height: 20px;}
   .btn_type03 {width: 70%;}
-  .step_area ul li p {width: 160px; height: 205px; padding-top: 5px; font-size: 14px;}
+  .btn_type03 button {font-size: 20px; letter-spacing: 0;}
+  .btn_type03 button i {width: 35px; height: 26px;}
+  .step_area {margin: -10px 0;}
+  .step_area ul li p {width: 150px; height: 192px; padding-top: 5px; font-size: 14px;}
   .step_area ul li p b {font-size: 24px;}
-  .step_area ul li:not(:first-of-type) {margin-left: -60px;}
-  .step_area ul li:not(:last-of-type)::before {right: 13px;}
+  .step_area ul li:not(:first-of-type) {margin-left: -50px;}
+  .step_area ul li:not(:last-of-type)::before {top: calc(50% - 1px); right: 13px; height:2px;}
 
-  .section01 h1 img {width: 70%; max-width: 300px;}
-  .section01 h3 {font-size: 18px;}
-  .section02 .fortune_area h3 {font-size: 20px; letter-spacing: 0;}
-  .section02 .fortune_area img {max-width: 400px;}
+  .section01 {padding-top: 70px;}
+  .section01 h1 img {width: 60%; max-width: 300px;}
+  .section01 h3 {margin-top: 20px; font-size: 18px;}
+  .section01 .img_area {margin-top: 40px;}
+  .section01 .img_area img {margin-bottom: 0;}
+  .section02 .fortune_area h3 {font-size: 28px; letter-spacing: 0;}
+  .section02 .fortune_area .img_area {margin: 40px 0 30px;}
+  .section02 .fortune_area .img_area img {width: 74%; max-width: 400px;}
+  .section02 .fortune_area p {font-size: 20px;}
+  .section02 .text_area {gap: 10px 30px; margin-top: 24px; padding: 16px; border-radius: 10px;}
+  .section02 .text_area p {font-size: 20px;}
+  .section02 .text_area .imgs {gap: 20px;}
+  .section02 .text_area .imgs img {width: 75px;}
+  .section02 .btn_area {margin-top: 24px;}
   .section02 .btn_area p {font-size: 20px;}
-  .section03 .tit_area {width: 100%;}
-  .section03 .game_area .btn {top: calc(50% - 40px);}
-  .section07 .text_area p {font-size: 14px;}
-  .section07 .text_area span {font-size: 16px;}
+  .section02 .btn_area ul {gap: 10px 5px;}
+  .section03 {padding: 225px 0 0; margin-top: -105px;}
+  .section03 .tit_area {width: 100%; margin: 0;}
+  .section03 .game_area {margin-top: -55px;}
+  .section03 .game_area .img_area .btn {top: calc(50% - 40px);}
+  .section04 .img_area {margin: 50px 0 -160px;}
+  .section04 ul {gap: 4px;}
+  .section04 ul li {width: calc(50% - 2px);}
+  .section04 .img_area img {max-width: 136%; margin-left: 0;}
+  .section05 {padding: 120px 0 100px;}
+  .section05 .video_area {margin-top: 30px;}
+  .section07 {padding: 100px 0 110px;}
+  .section07 .text_area {margin-top: 30px; padding: 12px 20px 12px 15px; border-radius: 10px;}
+  .section07 .text_area p {padding: 4px 15px; font-size: 12px;}
+  .section07 .text_area span {font-size: 15px;}
+  .section07 ul {gap: 5px; margin-top: 30px;}
+  .section07 ul li {width: calc((100% - 5px * 2) / 3);}
 }
 
 @media (max-width: 575px) {
