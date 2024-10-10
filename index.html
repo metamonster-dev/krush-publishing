@@ -8,6 +8,8 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>KRUSH</title>
+    <!-- Kakao Developer SDK -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <!-- CSS -->
     <link
       href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css"
@@ -24,281 +26,573 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="./js/common.js"></script>
   </head>
   <body>
-    <!-- CONTENTS -->
-    <div class="full_bg">
-      <div class="bg01">
-        <section class="section01">
-          <div class="inner">
-            <i class="deco_img d01">
-              <img src="./img/sec01_deco01.png" alt="deco" />
-            </i>
-            <i class="deco_img d02">
-              <img src="./img/sec01_deco02.png" alt="deco" />
-            </i>
+    <div class="pc_ver">
+      <img
+        src="./img/pc_img.jpg"
+        alt="술자리의 즐거움을 더해주는 크러시팡 게임"
+      />
+    </div>
 
-            <h1><img src="./img/krush_logo.png" alt="KURSH logo" /></h1>
-            <h3 class="jalnan">
-              플러팅이 필요할때 말해? 뭐해? <br />
-              친구, 연인에게 크러시캡으로 마음을 전하세요!
-            </h3>
-            <div class="img_area">
-              <i class="deco_img d03">
-                <img src="./img/sec01_deco03.png" alt="deco" />
+    <div class="mobile_ver">
+      <!-- CONTENTS -->
+      <div class="full_bg">
+        <div class="bg01">
+          <section class="section01">
+            <div class="inner">
+              <i
+                class="deco_img d01"
+                data-aos="zoom-in-up"
+                data-aos-duration="400"
+                data-aos-delay="100"
+                data-aos-easing="ease-out-back"
+              >
+                <img src="./img/sec01_deco01.png" alt="deco" />
               </i>
-              <i class="deco_img d04">
-                <img src="./img/sec01_deco04.png" alt="deco" />
+              <i
+                class="deco_img d02"
+                data-aos="zoom-in-up"
+                data-aos-duration="400"
+                data-aos-delay="200"
+                data-aos-easing="ease-out-back"
+              >
+                <img src="./img/sec01_deco02.png" alt="deco" />
               </i>
 
-              <img src="./img/sec01_img01.png" alt="img" />
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <div class="bg02">
-        <section class="section02">
-          <div class="inner">
-            <div class="tit_area">
-              <h2 class="jalnan ls">두근두근 플러팅 운세</h2>
-              <p>
-                썸? 연인? 좋아하는 사람을 생각하며<br />
-                플러팅 운세를 확인하세요
-              </p>
-            </div>
-            <div class="step_area jalnanGothic">
-              <ul>
-                <li>
-                  <p>STEP<b>01</b></p>
-                </li>
-                <li class="on">
-                  <p>STEP<b>02</b></p>
-                </li>
-              </ul>
-            </div>
-            <div class="fortune_area">
-              <h3>오늘의 플러팅 운세는 <span>“네가좋아”</span></h3>
+              <h1><img src="./img/krush_logo.png" alt="KURSH logo" /></h1>
+              <h3 class="jalnan">
+                플러팅이 필요할때 말해? 뭐해? <br />
+                친구, 연인에게 크러시캡으로 마음을 전하세요!
+              </h3>
               <div class="img_area">
-                <i class="deco_img d05">
-                  <img src="./img/sec02_deco01.png" alt="deco" />
+                <i
+                  class="deco_img d03"
+                  data-aos="zoom-in-up"
+                  data-aos-duration="400"
+                  data-aos-delay="100"
+                  data-aos-easing="ease-out-back"
+                  data-aos-anchor=".section01 .img_area"
+                >
+                  <img src="./img/sec01_deco03.png" alt="deco" />
                 </i>
-                <i class="deco_img d06">
-                  <img src="./img/sec02_deco02.png" alt="deco" />
+                <i
+                  class="deco_img d04"
+                  data-aos="zoom-in-up"
+                  data-aos-duration="400"
+                  data-aos-delay="200"
+                  data-aos-easing="ease-out-back"
+                  data-aos-anchor=".section01 .img_area"
+                >
+                  <img src="./img/sec01_deco04.png" alt="deco" />
                 </i>
 
-                <img src="./img/sec02_img05.png" alt="운세 img" />
-              </div>
-              <p>
-                그동안 부끄러워서 망설였던 당신?! <br />
-                숨겨둔 마음을 솔직하게 전해보세요
-              </p>
-            </div>
-            <div class="text_area">
-              <p>환상의 짝꿍캡</p>
-              <div class="imgs">
-                <img src="./img/sec02_img08.png" alt="운세 짝꿍 img" />
-                <img src="./img/sec02_img03.png" alt="운세 짝꿍 img" />
+                <img
+                  src="./img/sec01_img01.png"
+                  alt="img"
+                  data-aos="fade-in"
+                  data-aos-duration="400"
+                />
               </div>
             </div>
-            <div class="btn_area">
-              <i class="deco_img d07">
-                <img src="./img/sec02_deco03.png" alt="deco" />
-              </i>
+          </section>
+        </div>
 
-              <ul>
-                <li class="btn btn_type01">
-                  <button type="button">
-                    <i></i><span>친구에게 SNS 공유하기</span>
+        <!-- STEP 01 !!!!! -->
+        <div class="bg02 step_section" id="step01">
+          <section class="section02 sec02_type01">
+            <div class="inner">
+              <div class="tit_area">
+                <h2 class="jalnan ls">두근두근 플러팅 운세</h2>
+                <p>
+                  썸? 연인? 좋아하는 사람을 생각하며<br />
+                  플러팅 운세를 확인하세요
+                </p>
+              </div>
+              <div class="step_area jalnanGothic">
+                <ul>
+                  <li class="on">
+                    <p>STEP<b>01</b></p>
+                  </li>
+                  <li>
+                    <p>STEP<b>02</b></p>
+                  </li>
+                </ul>
+              </div>
+              <div class="select_area">
+                <h3>궁금한 <span>플러팅 운세를 선택</span>해주세요</h3>
+                <div class="slider_area">
+                  <i
+                    class="deco_img d13"
+                    data-aos="zoom-in-up"
+                    data-aos-duration="400"
+                    data-aos-delay="100"
+                    data-aos-easing="ease-out-back"
+                    data-aos-anchor=".section02 .slider_area"
+                  >
+                    <img src="./img/sec02_deco01.png" alt="deco" />
+                  </i>
+                  <i
+                    class="deco_img d14"
+                    data-aos="zoom-in-up"
+                    data-aos-duration="400"
+                    data-aos-delay="200"
+                    data-aos-easing="ease-out-back"
+                    data-aos-anchor=".section02 .slider_area"
+                  >
+                    <img src="./img/sec02_deco02.png" alt="deco" />
+                  </i>
+
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="slide_img">
+                        <img
+                          src="./img/sec02_btn01_off.png"
+                          alt="썸 off 이미지"
+                          class="img_off"
+                        />
+                        <img
+                          src="./img/sec02_btn01_on.png"
+                          alt="썸 on 이미지"
+                          class="img_on"
+                        />
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="slide_img">
+                        <img
+                          src="./img/sec02_btn02_off.png"
+                          alt="연인 off 이미지"
+                          class="img_off"
+                        />
+                        <img
+                          src="./img/sec02_btn02_on.png"
+                          alt="연인 on 이미지"
+                          class="img_on"
+                        />
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="slide_img">
+                        <img
+                          src="./img/sec02_btn03_off.png"
+                          alt="친구 off 이미지"
+                          class="img_off"
+                        />
+                        <img
+                          src="./img/sec02_btn03_on.png"
+                          alt="친구 on 이미지"
+                          class="img_on"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <button class="prev_btn">
+                    <img src="./img/sec02_prev.png" alt="이전" />
                   </button>
-                </li>
-                <li class="btn btn_type02">
-                  <button type="button"><i></i><span>다시하기</span></button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <div class="bg03">
-        <section class="section03">
-          <div class="inner">
-            <div class="tit_area">
-              <h2 class="jalnan ls">
-                술자리의 즐거움을 더해주는 <br />
-                크러시팡 게임
-              </h2>
-              <p>누가누가 더 랭킹이 높을지 겨뤄보세요</p>
-            </div>
-            <div class="game_area">
-              <i class="deco_img d08">
-                <img src="./img/sec03_deco01.png" alt="deco" />
-              </i>
-
-              <div class="img_area">
-                <img src="./img/sec03_img01.jpg" alt="크러시팡 이미지" />
-                <div class="btn btn_type03">
-                  <button type="button"><i></i><span>게임시작</span></button>
+                  <button class="next_btn">
+                    <img src="./img/sec02_next.png" alt="다음" />
+                  </button>
+                </div>
+              </div>
+              <div class="btn_area">
+                <div class="btn btn_type01">
+                  <button type="button" onclick="onStepActive('step02')">
+                    <span>운세보기</span>
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
-        <section class="section04">
-          <div class="inner">
-            <div class="tit_area">
-              <p>술자리에서 즐길 수 있는</p>
-              <h2 class="jalnan ls">카리나의 크러시캡 챌린지</h2>
-            </div>
-            <div class="img_area">
-              <img src="./img/sec04_img01.png" alt="img" />
-            </div>
-          </div>
-          <div class="inner no_pd">
-            <ul>
-              <li>
-                <img src="./img/sec04_img02.png" alt="크러시캡 챌린지 이미지" />
-              </li>
-              <li>
-                <img src="./img/sec04_img03.png" alt="크러시캡 챌린지 이미지" />
-              </li>
-              <li>
-                <img src="./img/sec04_img04.png" alt="크러시캡 챌린지 이미지" />
-              </li>
-              <li>
-                <img src="./img/sec04_img05.png" alt="크러시캡 챌린지 이미지" />
-              </li>
-              <li>
-                <img src="./img/sec04_img06.png" alt="크러시캡 챌린지 이미지" />
-              </li>
-              <li>
-                <img src="./img/sec04_img07.png" alt="크러시캡 챌린지 이미지" />
-              </li>
-            </ul>
-          </div>
-        </section>
-      </div>
-
-      <div class="bg04">
-        <section class="section05">
-          <div class="inner">
-            <i class="deco_img d09">
-              <img src="./img/sec05_deco01.png" alt="deco" />
-            </i>
-            <i class="deco_img d10">
-              <img src="./img/sec05_deco02.png" alt="deco" />
-            </i>
-            <i class="deco_img d11">
-              <img src="./img/sec05_deco03.png" alt="deco" />
-            </i>
-
-            <div class="tit_area">
-              <h2 class="jalnan">Campaign Movie</h2>
-            </div>
-            <div class="video_area">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/l00tcJdS1i4?si=u-qCZbgFMV2tx3JB"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-        </section>
-
-        <section class="section06">
-          <div class="inner">
-            <div class="tit_area">
-              <h2 class="jalnan">Campaign Poster</h2>
-            </div>
-            <div class="img_area">
-              <img
-                src="./img/sec06_img01.png"
-                alt="Crush on KRUSH 크러시 포스터 이미지"
-              />
-            </div>
-          </div>
-        </section>
-
-        <section class="section07">
-          <div class="inner">
-            <div class="tit_area">
-              <i class="deco_img d12">
-                <img src="./img/sec07_deco01.png" alt="deco" />
-              </i>
-
-              <h2 class="jalnan ls">개성있는 나만의 <br />크러시캡 자랑</h2>
-              <p>
-                크러시를 마시고 나오는 캡을 <br />
-                나만의 독특한 방법으로 표현해서 SNS에 공유해보세요!
-              </p>
-            </div>
-            <div class="deco_area">
-              <div class="text_area">
-                <p>필수 해시태그</p>
-                <span>#크러시캡</span>
+        <!-- STEP 02 !!!!! -->
+        <div class="bg02 step_section d-none" id="step02">
+          <section class="section02 sec02_type02">
+            <div class="inner">
+              <div class="tit_area">
+                <h2 class="jalnan ls">두근두근 플러팅 운세</h2>
+                <p>
+                  썸? 연인? 좋아하는 사람을 생각하며<br />
+                  플러팅 운세를 확인하세요
+                </p>
               </div>
+              <div class="step_area jalnanGothic">
+                <ul>
+                  <li>
+                    <p>STEP<b>01</b></p>
+                  </li>
+                  <li class="on">
+                    <p>STEP<b>02</b></p>
+                  </li>
+                </ul>
+              </div>
+              <div class="fortune_area">
+                <h3>오늘의 플러팅 운세는 <span>“네가좋아”</span></h3>
+                <div class="img_area">
+                  <i class="deco_img d05">
+                    <img src="./img/sec02_deco01.png" alt="deco" />
+                  </i>
+                  <i class="deco_img d06">
+                    <img src="./img/sec02_deco02.png" alt="deco" />
+                  </i>
+
+                  <img src="./img/sec02_img05.png" alt="운세 img" />
+                </div>
+                <p>
+                  그동안 부끄러워서 망설였던 당신?! <br />
+                  숨겨둔 마음을 솔직하게 전해보세요
+                </p>
+              </div>
+              <div class="text_area">
+                <p>환상의 짝꿍캡</p>
+                <div class="imgs">
+                  <img src="./img/sec02_img08.png" alt="운세 짝꿍 img" />
+                  <img src="./img/sec02_img03.png" alt="운세 짝꿍 img" />
+                </div>
+              </div>
+              <div class="btn_area">
+                <i class="deco_img d07">
+                  <img src="./img/sec02_deco03.png" alt="deco" />
+                </i>
+
+                <ul>
+                  <li class="btn btn_type01">
+                    <button type="button" onclick="onModalShow()">
+                      <i></i><span>친구에게 SNS 공유하기</span>
+                    </button>
+                  </li>
+                  <li class="btn btn_type02">
+                    <button type="button" onclick="onStepActive('step01')">
+                      <i></i><span>다시하기</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="bg03">
+          <section class="section03">
+            <div class="inner">
+              <div class="tit_area">
+                <h2 class="jalnan ls">
+                  술자리의 즐거움을 더해주는 <br />
+                  크러시팡 게임
+                </h2>
+                <p>누가누가 더 랭킹이 높을지 겨뤄보세요</p>
+              </div>
+              <div class="game_area">
+                <i class="deco_img d08">
+                  <img src="./img/sec03_deco01.png" alt="deco" />
+                </i>
+
+                <div class="img_area">
+                  <img src="./img/sec03_img01.jpg" alt="크러시팡 이미지" />
+                  <div class="btn btn_type03">
+                    <button type="button"><i></i><span>게임시작</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section04">
+            <div class="inner">
+              <div class="tit_area">
+                <p>술자리에서 즐길 수 있는</p>
+                <h2 class="jalnan ls">카리나의 크러시캡 챌린지</h2>
+              </div>
+              <div class="img_area">
+                <img src="./img/sec04_img01.png" alt="img" />
+              </div>
+            </div>
+            <div class="inner no_pd">
               <ul>
-                <li>
-                  <img src="./img/sec07_img01.jpg" alt="SNS 업로드 이미지" />
+                <li
+                  data-aos="fade-up"
+                  data-aos-duration="400"
+                  data-aos-delay="50"
+                  data-aos-anchor=".section04 ul"
+                >
+                  <img
+                    src="./img/sec04_img02.png"
+                    alt="크러시캡 챌린지 이미지"
+                  />
                 </li>
-                <li>
-                  <img src="./img/sec07_img02.jpg" alt="SNS 업로드 이미지" />
+                <li
+                  data-aos="fade-up"
+                  data-aos-duration="400"
+                  data-aos-delay="100"
+                  data-aos-anchor=".section04 ul"
+                >
+                  <img
+                    src="./img/sec04_img03.png"
+                    alt="크러시캡 챌린지 이미지"
+                  />
                 </li>
-                <li>
-                  <img src="./img/sec07_img03.jpg" alt="SNS 업로드 이미지" />
+                <li
+                  data-aos="fade-up"
+                  data-aos-duration="400"
+                  data-aos-delay="150"
+                  data-aos-anchor=".section04 ul"
+                >
+                  <img
+                    src="./img/sec04_img04.png"
+                    alt="크러시캡 챌린지 이미지"
+                  />
                 </li>
-                <li>
-                  <img src="./img/sec07_img04.jpg" alt="SNS 업로드 이미지" />
+                <li
+                  data-aos="fade-up"
+                  data-aos-duration="400"
+                  data-aos-delay="200"
+                  data-aos-anchor=".section04 ul"
+                >
+                  <img
+                    src="./img/sec04_img05.png"
+                    alt="크러시캡 챌린지 이미지"
+                  />
                 </li>
-                <li>
-                  <img src="./img/sec07_img05.jpg" alt="SNS 업로드 이미지" />
+                <li
+                  data-aos="fade-up"
+                  data-aos-duration="400"
+                  data-aos-delay="250"
+                  data-aos-anchor=".section04 ul"
+                >
+                  <img
+                    src="./img/sec04_img06.png"
+                    alt="크러시캡 챌린지 이미지"
+                  />
                 </li>
-                <li>
-                  <img src="./img/sec07_img06.jpg" alt="SNS 업로드 이미지" />
-                </li>
-                <li>
-                  <img src="./img/sec07_img07.jpg" alt="SNS 업로드 이미지" />
-                </li>
-                <li>
-                  <img src="./img/sec07_img08.jpg" alt="SNS 업로드 이미지" />
-                </li>
-                <li>
-                  <img src="./img/sec07_img09.jpg" alt="SNS 업로드 이미지" />
+                <li
+                  data-aos="fade-up"
+                  data-aos-duration="400"
+                  data-aos-delay="300"
+                  data-aos-anchor=".section04 ul"
+                >
+                  <img
+                    src="./img/sec04_img07.png"
+                    alt="크러시캡 챌린지 이미지"
+                  />
                 </li>
               </ul>
             </div>
-          </div>
-        </section>
-      </div>
-    </div>
-    <!-- // CONTENTS -->
+          </section>
+        </div>
 
-    <!-- FOOTER -->
-    <footer id="footer">
-      <div class="inner">
-        <img src="./img/lotte_logo.png" alt="롯데칠성음료 logo" />
-        <ul class="links">
-          <li><a href="javascript:;">이용약관</a></li>
-          <li>
-            <a href="javascript:;"><b>개인정보 처리방침</b></a>
-          </li>
-          <li><a href="javascript:;">롯데칠성몰</a></li>
-        </ul>
-        <ul class="text">
-          <li>서울특별시 송파구 올림픽로 269 롯데캐슬골드 5층</li>
-          <li>TEL : 02-3479-9114</li>
-          <li>FAX : 02-536-9767</li>
-          <li>대표자 : 박윤기</li>
-        </ul>
+        <div class="bg04">
+          <section class="section05">
+            <div class="inner">
+              <i
+                class="deco_img d09"
+                data-aos="zoom-in-up"
+                data-aos-duration="400"
+                data-aos-delay="100"
+                data-aos-easing="ease-out-back"
+              >
+                <img src="./img/sec05_deco01.png" alt="deco" />
+              </i>
+              <i
+                class="deco_img d10"
+                data-aos="zoom-in-up"
+                data-aos-duration="400"
+                data-aos-delay="200"
+                data-aos-easing="ease-out-back"
+              >
+                <img src="./img/sec05_deco02.png" alt="deco" />
+              </i>
+              <i class="deco_img d11">
+                <img src="./img/sec05_deco03.png" alt="deco" />
+              </i>
+
+              <div class="tit_area">
+                <h2 class="jalnan">Campaign Movie</h2>
+              </div>
+              <div class="video_area">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/l00tcJdS1i4?si=u-qCZbgFMV2tx3JB"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </section>
+
+          <section class="section06">
+            <div class="inner">
+              <div class="tit_area">
+                <h2 class="jalnan">Campaign Poster</h2>
+              </div>
+              <div class="img_area">
+                <img
+                  src="./img/sec06_img01.png"
+                  alt="Crush on KRUSH 크러시 포스터 이미지"
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="section07">
+            <div class="inner">
+              <div class="tit_area">
+                <i
+                  class="deco_img d12"
+                  data-aos="zoom-in-up"
+                  data-aos-duration="400"
+                  data-aos-delay="100"
+                  data-aos-easing="ease-out-back"
+                >
+                  <img src="./img/sec07_deco01.png" alt="deco" />
+                </i>
+
+                <h2 class="jalnan ls">개성있는 나만의 <br />크러시캡 자랑</h2>
+                <p>
+                  크러시를 마시고 나오는 캡을 <br />
+                  나만의 독특한 방법으로 표현해서 SNS에 공유해보세요!
+                </p>
+              </div>
+              <div class="deco_area">
+                <div class="text_area">
+                  <p>필수 해시태그</p>
+                  <span>#크러시캡</span>
+                </div>
+                <ul>
+                  <li
+                    data-aos="fade-up"
+                    data-aos-duration="400"
+                    data-aos-delay="50"
+                    data-aos-anchor=".section07 ul"
+                  >
+                    <img src="./img/sec07_img01.jpg" alt="SNS 업로드 이미지" />
+                  </li>
+                  <li
+                    data-aos="fade-up"
+                    data-aos-duration="400"
+                    data-aos-delay="100"
+                    data-aos-anchor=".section07 ul"
+                  >
+                    <img src="./img/sec07_img02.jpg" alt="SNS 업로드 이미지" />
+                  </li>
+                  <li
+                    data-aos="fade-up"
+                    data-aos-duration="400"
+                    data-aos-delay="150"
+                    data-aos-anchor=".section07 ul"
+                  >
+                    <img src="./img/sec07_img03.jpg" alt="SNS 업로드 이미지" />
+                  </li>
+                  <li
+                    data-aos="fade-up"
+                    data-aos-duration="400"
+                    data-aos-delay="200"
+                    data-aos-anchor=".section07 ul"
+                  >
+                    <img src="./img/sec07_img04.jpg" alt="SNS 업로드 이미지" />
+                  </li>
+                  <li
+                    data-aos="fade-up"
+                    data-aos-duration="400"
+                    data-aos-delay="250"
+                    data-aos-anchor=".section07 ul"
+                  >
+                    <img src="./img/sec07_img05.jpg" alt="SNS 업로드 이미지" />
+                  </li>
+                  <li
+                    data-aos="fade-up"
+                    data-aos-duration="400"
+                    data-aos-delay="300"
+                    data-aos-anchor=".section07 ul"
+                  >
+                    <img src="./img/sec07_img06.jpg" alt="SNS 업로드 이미지" />
+                  </li>
+                  <li
+                    data-aos="fade-up"
+                    data-aos-duration="400"
+                    data-aos-delay="350"
+                    data-aos-anchor=".section07 ul"
+                  >
+                    <img src="./img/sec07_img07.jpg" alt="SNS 업로드 이미지" />
+                  </li>
+                  <li
+                    data-aos="fade-up"
+                    data-aos-duration="400"
+                    data-aos-delay="400"
+                    data-aos-anchor=".section07 ul"
+                  >
+                    <img src="./img/sec07_img08.jpg" alt="SNS 업로드 이미지" />
+                  </li>
+                  <li
+                    data-aos="fade-up"
+                    data-aos-duration="400"
+                    data-aos-delay="450"
+                    data-aos-anchor=".section07 ul"
+                  >
+                    <img src="./img/sec07_img09.jpg" alt="SNS 업로드 이미지" />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="modal_wrap">
+          <div class="modal_area_bg">
+            <div class="modal_area">
+              <div class="modal_top">
+                <button type="button" class="x_btn" onclick="onModalHide()">
+                  <img src="./img/icon_close.png" alt="모달 닫기" />
+                </button>
+                <p class="jalnan">공유하기</p>
+              </div>
+              <div class="modal_content">
+                <ul>
+                  <li>
+                    <button type="button" onclick="onKakaoShare()">
+                      <img src="./img/icon_kakao.png" alt="카카오톡 공유" />
+                      <span>카카오톡 공유</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onclick="onCopyUrl()">
+                      <img src="./img/icon_link.png" alt="링크 복사" />
+                      <span>링크 복사</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </footer>
-    <!-- // FOOTER -->
+      <!-- // CONTENTS -->
+
+      <!-- FOOTER -->
+      <footer id="footer">
+        <div class="inner">
+          <img src="./img/lotte_logo.png" alt="롯데칠성음료 logo" />
+          <ul class="links">
+            <li><a href="javascript:;">이용약관</a></li>
+            <li>
+              <a href="javascript:;"><b>개인정보 처리방침</b></a>
+            </li>
+            <li><a href="javascript:;">롯데칠성몰</a></li>
+          </ul>
+          <ul class="text">
+            <li>서울특별시 송파구 올림픽로 269 롯데캐슬골드 5층</li>
+            <li>TEL : 02-3479-9114</li>
+            <li>FAX : 02-536-9767</li>
+            <li>대표자 : 박윤기</li>
+          </ul>
+        </div>
+      </footer>
+      <!-- // FOOTER -->
+    </div>
   </body>
 </html>

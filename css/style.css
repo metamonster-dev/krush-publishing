@@ -44,6 +44,9 @@ img{display:block; max-width:100%; height:auto;}
 .jalnan {font-family: 'Jalnan';}
 .jalnanGothic {font-family: 'JalnanGothic';}
 
+.d-none {display: none;}
+.d-block {display: block;}
+
 .inner {position: relative; width: 100%; max-width: 840px; margin: 0 auto; padding: 0 50px; z-index: 5;}
 .inner.no_pd {padding: 0;}
 
