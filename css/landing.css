@@ -136,7 +136,7 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 
 /* SECTION 07 */
 .d12 {top: -40%; right: -4%; width: 13.92%;}
-.section07 {padding: 200px 0 222px;}
+.section07 {padding: 160px 0 222px;}
 .section07 .tit_area {position: relative;}
 .section07 .deco_area {position: relative; z-index: 2;}
 .section07 .deco_area::before {content: ''; position: absolute; top: 8%; left: -13%; width: 121%; height: 101%; background: url('../img/sec07_bg_deco.png') no-repeat center / contain; z-index: -1;}
@@ -236,13 +236,13 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
   .section04 ul li {width: calc(50% - 2px);}
   .section05 {padding: 120px 0 100px;}
   .section05 .video_area {margin-top: 30px;}
-  .section07 {padding: 100px 0 110px;}
+  .section06 .img_area img {max-width: 116%; margin-left: -7.5%;}
+  .section07 {padding: 80px 0 110px;}
   .section07 .text_area {margin-top: 30px; padding: 12px 20px 12px 15px; border-radius: 10px;}
   .section07 .text_area p {padding: 4px 15px; font-size: 12px;}
   .section07 .text_area span {font-size: 14px;}
   .section07 ul {gap: 5px; margin-top: 30px;}
   .section07 ul li {width: calc((100% - 5px * 2) / 3);}
-
   .section08 {padding: 90px 0 100px;}
   .section08 h2 img {width: 60%; max-width: 300px;}
   .section08 .slider_area {margin: 15px 0 50px;}
