@@ -65,7 +65,7 @@ function onKakaoShare() {
     content: {
       title: "KRUSH(크러시) - 두근두근 플러팅 운세",
       description: '오늘의 플러팅 운세는 "내가쏠게"',
-      imageUrl: `${siteUrl}/img/cap/sns_img01.png`,
+      imageUrl: `${siteUrl}/img/cap/sns_img01.jpg`,
       link: {
         mobileWebUrl: window.location.href,
         webUrl: window.location.href,
