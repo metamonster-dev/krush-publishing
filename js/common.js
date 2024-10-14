@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // Swiper Slide
-  const swiper = new Swiper(".slider_area", {
+  const swiper1 = new Swiper("#slider01", {
     slidesPerView: 1.6,
     centeredSlides: true,
     loop: true,
@@ -9,8 +9,25 @@ $(document).ready(function () {
     observer: true,
     observeParents: true,
     navigation: {
-      nextEl: ".slider_area .next_btn",
-      prevEl: ".slider_area .prev_btn",
+      nextEl: "#slider01 .next_btn",
+      prevEl: "#slider01 .prev_btn",
+    },
+  });
+
+  const swiper2 = new Swiper("#slider02", {
+    slidesPerView: 1.5,
+    spaceBetween: 50,
+    centeredSlides: true,
+    loop: true,
+    speed: 1000,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      767: {
+        spaceBetween: 130,
+      },
     },
   });
 
@@ -22,6 +39,8 @@ $(document).ready(function () {
   Kakao.init("2acfc4576e78cb295c47df69625db60b");
   console.log(Kakao.isInitialized());
 });
+
+const siteUrl = "https://metamonster-dev.github.io/krush-publishing";
 
 // STEP show / hide
 function onStepActive(step) {
@@ -45,9 +64,8 @@ function onKakaoShare() {
     objectType: "feed",
     content: {
       title: "KRUSH(크러시) - 두근두근 플러팅 운세",
-      description:
-        "네가 좋아 | 그동안 부끄러워서 망설였던 당신?! 숨겨둔 마음을 솔직하게 전해보세요",
-      imageUrl: "../img/sec02_img05.png",
+      description: '오늘의 플러팅 운세는 "내가쏠게"',
+      imageUrl: `${siteUrl}/img/cap/cap_img01.png`,
       link: {
         mobileWebUrl: window.location.href,
         webUrl: window.location.href,
