@@ -37,7 +37,6 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .btn_type01 button i {display: block; width: 40px; height: 40px; background: url('../img/icon_share.png') no-repeat center / contain;}
 .btn_type02 button {background: linear-gradient(0deg, #91d9ff, #ffffff);}
 .btn_type02 button i {display: block; width: 40px; height: 40px; background: url('../img/icon_reset.png') no-repeat center / contain;}
-.btn_type03 {width: 80%; max-width: 434px;}
 .btn_type03 button {width: 100%; border-color: #5c0905; background: linear-gradient(0deg, #d33901, #f86c04); font-size: 42px; color: #ffffff; letter-spacing: 0;}
 .btn_type03 button i {display: block; width: 61px; height: 45px; background: url('../img/icon_game.png') no-repeat center / contain;}
 .btn_type03::before {border-color: #5c0905; background: linear-gradient(0deg, #8e300b, #ffffff);}
@@ -113,7 +112,8 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .section03 .game_area::before {content: ''; position: absolute; top: 0; left: -11%; display: block; width: 150%; height: 100%; background: url('../img/sec03_bg_deco.png') no-repeat center / contain; z-index: -1;}
 .section03 .game_area .img_area {position: relative; width: 100%; padding-bottom: 144.8%; border: 6px solid #fff; border-radius: 40px; background-color: #1c2632; overflow: hidden;}
 .section03 .game_area .img_area img {position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; object-position: center; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%);}
-.section03 .game_area .img_area .btn {position: absolute; top: calc(50% - 67.5px); left: 50%; transform: translateX(-50%); -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%);}
+.section03 .game_area .img_area .btn_wrap {position: absolute; top: calc(50% - 67.5px); left: 50%; width: 80%; max-width: 434px; transform: translateX(-50%); -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%);}
+.section03 .game_area .img_area .btn {width: 100%; animation:zoomInOut 2s ease-in-out 0.5s infinite;}
 
 /* SECTION 04 */
 .section04 .img_area {margin-bottom: -16%;}
@@ -168,6 +168,13 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .modal_wrap .modal_area .modal_content ul li button {display: block;}
 .modal_wrap .modal_area .modal_content ul li button span {display: block; margin-top: 25px; font-size: 30px; color: #000;}
 
+/*===== ANIMATION =====*/
+@keyframes zoomInOut {
+  0% {transform: scale(1);}
+  40% {transform: scale(1.2);}
+  100% {transform: scale(1);}
+}
+
 @media (max-width: 1919px) {
   .pc_ver {overflow: hidden;}
   .pc_ver img {position: relative; left: 50%; width: auto; max-width: none; height: 1080px; transform: translateX(-50%); -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%);}
@@ -191,11 +198,10 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
   .tit_area h2 {font-size: 30px; line-height: 1.4;}
   .tit_area h2.ls {letter-spacing: 0;}
   .tit_area p {font-size: 16px;}
-  .btn button {gap: 5px; height: 80px; border-width: 2px; font-size: 18px; letter-spacing: -0.15rem;}
+  .btn button {gap: 5px; height: 80px; border-width: 2px; font-size: 16px; letter-spacing: -0.15rem;}
   .btn::before {margin-top: 5px; border-width: 2px;}
   .btn_type01 button i {width: 20px; height: 20px;}
   .btn_type02 button i {width: 20px; height: 20px;}
-  .btn_type03 {width: 60%;}
   .btn_type03 button {font-size: 20px; letter-spacing: 0;}
   .btn_type03 button i {width: 35px; height: 26px;}
   .step_area {margin: -10px 0;}
@@ -227,10 +233,11 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
   .section02.sec02_type01 .btn_type01 {width: 60%;}
   .section02.sec02_type01 .btn_type01 button {font-size: 24px;}
   .section02.sec02_type02 .btn_type01 button {padding: 0 16px;}
-  .section02.sec02_type02 .btn_type02 button {padding: 0 24px;}
+  .section02.sec02_type02 .btn_type02 button {padding: 0 20px;}
   .section03 {padding: 180px 0 60px; margin-top: -80px;}
   .section03 .tit_area {width: 100%; margin: 0;}
   .section03 .game_area {margin-top: -55px; padding-bottom: 46px;}
+  .section03 .game_area .img_area .btn_wrap {width: 60%;}
   .section03 .game_area .img_area .btn {top: calc(50% - 40px);}
   .section04 ul {gap: 4px;}
   .section04 ul li {width: calc(50% - 2px);}

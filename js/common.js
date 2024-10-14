@@ -59,13 +59,6 @@ function onModalHide() {
 // KAKAO share
 function onKakaoShare() {
   const { Kakao } = window;
-  // const ogImageTag = document.querySelector('meta[property="og:image"]');
-  // if (ogImageTag)
-  //   ogImageTag.setAttribute("content", `${siteUrl}/img/cap/sns_img01.jpg`);
-
-  // Kakao.Share.createScrapButton({
-  //   requestUrl: siteUrl,
-  // });
 
   Kakao.Share.sendDefault({
     objectType: "feed",
@@ -88,6 +81,27 @@ function onKakaoShare() {
       },
     ],
   });
+  // const ogImageTag = document.querySelector('meta[property="og:image"]');
+  // if (ogImageTag)
+  //   ogImageTag.setAttribute("content", `${siteUrl}/img/cap/sns_img01.jpg`);
+
+  // Kakao.Share.createScrapButton({
+  //   requestUrl: siteUrl,
+  // });
+
+  // Kakao.Link.createDefaultButton({
+  //   container: '#kakaoLinkBtn',
+  //   objectType: 'feed',
+  //   content: {
+  //     title: 'KRUSH(크러시) - 두근두근 플러팅 운세',
+  //     description: '오늘의 플러팅 운세는 "내가쏠게"',
+  //     imageUrl: `${siteUrl}/img/cap/sns_img01.jpg`, // 800px x 400px 추천
+  //     link: {
+  //         mobileWebUrl: window.location.href,
+  //         webUrl: window.location.href
+  //     }
+  //   }
+  // });
 }
 
 // URL copy
