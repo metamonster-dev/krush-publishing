@@ -40,7 +40,8 @@ $(document).ready(function () {
   console.log(Kakao.isInitialized());
 });
 
-const siteUrl = "https://metamonster-dev.github.io/krush-publishing";
+// const siteUrl = "https://metamonster-dev.github.io/krush-publishing";
+const siteUrl = "http://beerkrushcap.com";
 
 // STEP show / hide
 function onStepActive(step) {
