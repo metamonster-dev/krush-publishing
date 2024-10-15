@@ -37,16 +37,38 @@ $(document).ready(function () {
   // KAKAO
   Kakao.cleanup();
   Kakao.init("2acfc4576e78cb295c47df69625db60b");
-  console.log(Kakao.isInitialized());
+  // console.log(Kakao.isInitialized());
+});
+
+$(window).on("load", function () {
+  pageInit();
 });
 
 // const siteUrl = "https://metamonster-dev.github.io/krush-publishing";
 const siteUrl = "http://beerkrushcap.com";
 
+function pageInit() {
+  const paramsCap = getParams()?.cap;
+
+  if (paramsCap) {
+    const divOffset =
+      $(".section08").offset().top + $(".section08").outerHeight() - 20;
+
+    $("html, body").animate({ scrollTop: divOffset }, 400);
+    $(".step_section#step02").removeClass("d-none");
+    $(".step_section#step01").addClass("d-none");
+    $(".step_section .sec02_type02 .img_area").addClass("on");
+  } else {
+    $(".step_section#step01").removeClass("d-none");
+    $(".step_section#step02").addClass("d-none");
+  }
+}
+
 // STEP show / hide
 function onStepActive(step) {
   $(".step_section").addClass("d-none");
   $(`.step_section#${step}`).removeClass("d-none");
+  $(".step_section .sec02_type02 .img_area").removeClass("on").addClass("on");
 }
 
 // Modal show / hide
@@ -55,6 +77,18 @@ function onModalShow() {
 }
 function onModalHide() {
   $(".modal_wrap").removeClass("show");
+}
+
+// GET Params
+function getParams() {
+  let params = {};
+  const regex = /[?&]+([^=&]+)=([^&]*)/gi;
+  if (regex.test(window.location.search)) {
+    window.location.search.replace(regex, function (str, key, value) {
+      params[key] = value;
+    });
+  }
+  return params;
 }
 
 // KAKAO share
