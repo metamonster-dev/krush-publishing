@@ -224,6 +224,7 @@
                           src="./img/sec02_btn01_on.png"
                           alt="썸 on 이미지"
                           class="img_on"
+                          value="썸"
                         />
                       </div>
                     </div>
@@ -238,6 +239,7 @@
                           src="./img/sec02_btn02_on.png"
                           alt="연인 on 이미지"
                           class="img_on"
+                          value="연인"
                         />
                       </div>
                     </div>
@@ -252,6 +254,7 @@
                           src="./img/sec02_btn03_on.png"
                           alt="친구 on 이미지"
                           class="img_on"
+                          value="친구"
                         />
                       </div>
                     </div>
@@ -266,7 +269,7 @@
               </div>
               <div class="btn_area">
                 <div class="btn btn_type01">
-                  <button type="button" onclick="window.location.href='?cap=1'">
+                  <button type="button" onclick="gotoFortune()">
                     <span>운세보기</span>
                   </button>
                 </div>
@@ -296,29 +299,220 @@
                   </li>
                 </ul>
               </div>
-              <div class="fortune_area">
-                <h3>오늘의 플러팅 운세는 <span>“내가쏠게”</span></h3>
-                <div class="img_area">
-                  <i class="deco_img d05">
-                    <img src="./img/sec02_deco01.png" alt="deco" />
-                  </i>
-                  <i class="deco_img d06">
-                    <img src="./img/sec02_deco02.png" alt="deco" />
-                  </i>
+              <!-- 반복 -->
+              <div class="fortune1 d-none">
+                <div class="fortune_area">
+                  <div class="img_area on">
+                    <h3>오늘의 플러팅 운세는 <span>“내가쏠게”</span></h3>
+                    <i class="deco_img d05">
+                      <img src="./img/sec02_deco01.png" alt="deco" />
+                    </i>
+                    <i class="deco_img d06">
+                      <img src="./img/sec02_deco02.png" alt="deco" />
+                    </i>
 
-                  <img src="./img/cap/cap_img01.png" alt="운세 img" />
+                    <img src="./img/cap/cap_img01.png" alt="운세 img" />
+                  </div>
+                  <p>
+                    뿌린대로 x100배로 거두리라. <br />
+                    오늘은 내가 시원하게 쏘는 날! <br />
+                    오늘 하루 슈퍼히어로가 되어보세요
+                  </p>
                 </div>
-                <p>
-                  뿌린대로 x100배로 거두리라. <br />
-                  오늘은 내가 시원하게 쏘는 날! <br />
-                  오늘 하루 슈퍼히어로가 되어보세요
-                </p>
+                <div class="text_area">
+                  <p>환상의 짝꿍캡</p>
+                  <div class="imgs">
+                    <img src="./img/cap/cap_img04.png" alt="운세 짝꿍 img" />
+                    <img src="./img/cap/cap_img02.png" alt="운세 짝꿍 img" />
+                  </div>
+                </div>
               </div>
-              <div class="text_area">
-                <p>환상의 짝꿍캡</p>
-                <div class="imgs">
-                  <img src="./img/cap/cap_img04.png" alt="운세 짝꿍 img" />
-                  <img src="./img/cap/cap_img02.png" alt="운세 짝꿍 img" />
+              <!-- 반복 -->
+              <div class="fortune2 d-none">
+                <div class="fortune_area">
+                  <div class="img_area on">
+                    <h3>오늘의 플러팅 운세는 <span>“네가 좋아”</span></h3>
+                    <i class="deco_img d05">
+                      <img src="./img/sec02_deco01.png" alt="deco" />
+                    </i>
+                    <i class="deco_img d06">
+                      <img src="./img/sec02_deco02.png" alt="deco" />
+                    </i>
+
+                    <img src="./img/cap/cap_img05.png" alt="운세 img" />
+                  </div>
+                  <p>
+                    그동안 부끄러워서 망설였던 당신?! <br />
+                    숨겨둔 마음을 솔직하게 전해보세요 
+                  </p>
+                </div>
+                <div class="text_area">
+                  <p>환상의 짝꿍캡</p>
+                  <div class="imgs">
+                    <img src="./img/cap/cap_img03.png" alt="운세 짝꿍 img" />
+                    <img src="./img/cap/cap_img08.png" alt="운세 짝꿍 img" />
+                  </div>
+                </div>
+              </div>
+              <div class="fortune3 d-none">
+                <div class="fortune_area">
+                  <div class="img_area on">
+                    <h3>오늘의 플러팅 운세는 <span>“오늘힘내”</span></h3>
+                    <i class="deco_img d05">
+                      <img src="./img/sec02_deco01.png" alt="deco" />
+                    </i>
+                    <i class="deco_img d06">
+                      <img src="./img/sec02_deco02.png" alt="deco" />
+                    </i>
+
+                    <img src="./img/cap/cap_img02.png" alt="운세 img" />
+                  </div>
+                  <p>
+                    항상 응원하는 당신이 있기에 <br />
+                    힘든 시기는 곧 지나가리라! <br />
+                    달달한 간식이나 따뜻한 말로 마음을 전해보세요
+                  </p>
+                </div>
+                <div class="text_area">
+                  <p>환상의 짝꿍캡</p>
+                  <div class="imgs">
+                    <img src="./img/cap/cap_img01.png" alt="운세 짝꿍 img" />
+                    <img src="./img/cap/cap_img08.png" alt="운세 짝꿍 img" />
+                  </div>
+                </div>
+              </div>
+              <div class="fortune4 d-none">
+                <div class="fortune_area">
+                  <div class="img_area on">
+                    <h3>오늘의 플러팅 운세는 <span>"보고싶어"</span></h3>
+                    <i class="deco_img d05">
+                      <img src="./img/sec02_deco01.png" alt="deco" />
+                    </i>
+                    <i class="deco_img d06">
+                      <img src="./img/sec02_deco02.png" alt="deco" />
+                    </i>
+
+                    <img src="./img/cap/cap_img03.png" alt="운세 img" />
+                  </div>
+                  <p>
+                    지금 보고싶은 사람이 있나요?  <br />
+                    상대방이 좋아하는 음식이나 취미를 생각하며 <br />
+                    약속을 잡아보세요.
+                  </p>
+                </div>
+                <div class="text_area">
+                  <p>환상의 짝꿍캡</p>
+                  <div class="imgs">
+                    <img src="./img/cap/cap_img04.png" alt="운세 짝꿍 img" />
+                    <img src="./img/cap/cap_img01.png" alt="운세 짝꿍 img" />
+                  </div>
+                </div>
+              </div>
+              <div class="fortune5 d-none">
+                <div class="fortune_area">
+                  <div class="img_area on">
+                    <h3>오늘의 플러팅 운세는 <span>"나랑놀자"</span></h3>
+                    <i class="deco_img d05">
+                      <img src="./img/sec02_deco01.png" alt="deco" />
+                    </i>
+                    <i class="deco_img d06">
+                      <img src="./img/sec02_deco02.png" alt="deco" />
+                    </i>
+
+                    <img src="./img/cap/cap_img04.png" alt="운세 img" />
+                  </div>
+                  <p>
+                    그동안 쌓았던 스트레스를 털어내는 날!   <br />
+                    나를 즐겁게 해주는 사람에게 연락해보세요. <br />
+                    내일 뭐해? 나랑 놀자~
+                  </p>
+                </div>
+                <div class="text_area">
+                  <p>환상의 짝꿍캡</p>
+                  <div class="imgs">
+                    <img src="./img/cap/cap_img05.png" alt="운세 짝꿍 img" />
+                    <img src="./img/cap/cap_img07.png" alt="운세 짝꿍 img" />
+                  </div>
+                </div>
+              </div>
+              <div class="fortune6 d-none">
+                <div class="fortune_area">
+                  <div class="img_area on">
+                    <h3>오늘의 플러팅 운세는 <span>"새복많받"</span></h3>
+                    <i class="deco_img d05">
+                      <img src="./img/sec02_deco01.png" alt="deco" />
+                    </i>
+                    <i class="deco_img d06">
+                      <img src="./img/sec02_deco02.png" alt="deco" />
+                    </i>
+
+                    <img src="./img/cap/cap_img06.png" alt="운세 img" />
+                  </div>
+                  <p>
+                    복은 나눌수록 커집니다!   <br />
+                    그동안 고마웠던 마음을 전해보세요. <br />
+                    내년에도 나랑 함께 하자?
+                  </p>
+                </div>
+                <div class="text_area">
+                  <p>환상의 짝꿍캡</p>
+                  <div class="imgs">
+                    <img src="./img/cap/cap_img01.png" alt="운세 짝꿍 img" />
+                    <img src="./img/cap/cap_img08.png" alt="운세 짝꿍 img" />
+                  </div>
+                </div>
+              </div>
+              <div class="fortune7 d-none">
+                <div class="fortune_area">
+                  <div class="img_area on">
+                    <h3>오늘의 플러팅 운세는 <span>"완전반함"</span></h3>
+                    <i class="deco_img d05">
+                      <img src="./img/sec02_deco01.png" alt="deco" />
+                    </i>
+                    <i class="deco_img d06">
+                      <img src="./img/sec02_deco02.png" alt="deco" />
+                    </i>
+
+                    <img src="./img/cap/cap_img07.png" alt="운세 img" />
+                  </div>
+                  <p>
+                    뭔데 이 귀여운 생명체는?!    <br />
+                    당신을 심쿵하게 만든 매력포인트를 상대방에게 얘기해보세요. <br />
+                  </p>
+                </div>
+                <div class="text_area">
+                  <p>환상의 짝꿍캡</p>
+                  <div class="imgs">
+                    <img src="./img/cap/cap_img08.png" alt="운세 짝꿍 img" />
+                    <img src="./img/cap/cap_img05.png" alt="운세 짝꿍 img" />
+                  </div>
+                </div>
+              </div>
+              <div class="fortune8 d-none">
+                <div class="fortune_area">
+                  <div class="img_area on">
+                    <h3>오늘의 플러팅 운세는 <span>"히든하트맵"</span></h3>
+                    <i class="deco_img d05">
+                      <img src="./img/sec02_deco01.png" alt="deco" />
+                    </i>
+                    <i class="deco_img d06">
+                      <img src="./img/sec02_deco02.png" alt="deco" />
+                    </i>
+
+                    <img src="./img/cap/cap_img08.png" alt="운세 img" />
+                  </div>
+                  <p>
+                    하트캡이 나오면 사랑이 이루어진다?! <br />
+                    온 우주가 당신을  응원하고 있어요. <br />
+                    행운을 MAX로 채워주는 하트캡과 함께 사랑을 고백해보세요!
+                  </p>
+                </div>
+                <div class="text_area">
+                  <p>환상의 짝꿍캡</p>
+                  <div class="imgs">
+                    <img src="./img/cap/cap_img05.png" alt="운세 짝꿍 img" />
+                    <img src="./img/cap/cap_img07.png" alt="운세 짝꿍 img" />
+                  </div>
                 </div>
               </div>
               <div class="btn_area">
@@ -333,7 +527,7 @@
                     </button>
                   </li>
                   <li class="btn btn_type02">
-                    <button type="button" onclick="window.location.href='/'">
+                    <button type="button" onclick="retry()">
                       <i></i><span>다시하기</span>
                     </button>
                   </li>

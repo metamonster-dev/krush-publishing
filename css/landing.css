@@ -89,6 +89,7 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .section02 .fortune_area {text-align: center;}
 .section02 .fortune_area .img_area {position: relative; margin: 70px 0 60px; z-index: 2;}
 .section02 .fortune_area .img_area::before {content: ''; position: absolute; top: -8%; left: -24%; width: 140%; height: 100%; background: url('../img/sec02_bg_deco.png') no-repeat center / contain; z-index: -1;}
+.section02 .fortune_area .img_area h3 {position: relative; z-index: 2; top: -40px}
 .section02 .fortune_area .img_area > img {max-width: 568px; margin: 0 auto; opacity: 0;}
 .section02 .fortune_area .img_area.on > img {animation: rotate 1s ease-in-out 0.5s forwards; }
 .section02 .fortune_area p {font-size: 38px; color: #fff; font-weight: 700; line-height: 1.6; text-align: center;}
