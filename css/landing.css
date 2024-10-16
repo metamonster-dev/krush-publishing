@@ -90,7 +90,7 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .section02 .fortune_area .img_area {position: relative; margin: 70px 0 60px; z-index: 2;}
 .section02 .fortune_area .img_area::before {content: ''; position: absolute; top: -8%; left: -24%; width: 140%; height: 100%; background: url('../img/sec02_bg_deco.png') no-repeat center / contain; z-index: -1;}
 .section02 .fortune_area .img_area > img {max-width: 568px; margin: 0 auto; opacity: 0;}
-.section02 .fortune_area .img_area.on > img {animation: rotate 1s ease-in-out 0.5s forwards; }
+.section02 .fortune_area .img_area.on > img {animation: scaleOpacity 1s ease-in-out 0.5s forwards; }
 .section02 .fortune_area p {font-size: 38px; color: #fff; font-weight: 700; line-height: 1.6; text-align: center;}
 .section02 .text_area {display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 75px;  margin-top: 56px; padding: 25px; border: 1px solid #fff; border-radius: 22px; background-color: rgba(7,17,147,0.4);}
 .section02 .text_area p {font-size: 40px; color: #fff; font-weight: 800;}
@@ -175,9 +175,10 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
   40% {transform: scale(1.2);}
   100% {transform: scale(1);}
 }
-@keyframes rotate {
-  0% {transform: scale(0) rotate3d(1, 1, 1, 0); opacity: 0;}
-  100% {transform: scale(1) rotate3d(1, 1, 1, 720deg); opacity: 1;}
+@keyframes scaleOpacity {
+  0% {transform: scale(0); opacity: 0;}
+  60% {transform: scale(1.1); opacity: 1;}
+  100% {transform: scale(1); opacity: 1;}
 }
 
 @media (max-width: 1919px) {
