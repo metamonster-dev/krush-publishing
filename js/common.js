@@ -214,8 +214,9 @@ const retry = () => {
   sendApi({
     "key":"retry",
     "value":1
+  }).then(() => {
+    window.location.href='/'
   })
-  window.location.href='/'
 }
 
 const sendApi = (data) => {
