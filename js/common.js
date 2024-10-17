@@ -53,11 +53,11 @@ const localStorageInit = () => {
     // 처음 방문
     localStorage.setItem("visit", "1");
     sendApi({
-      "key":"visit",
-      "value":1
-    })
+      key: "visit",
+      value: 1,
+    });
   }
-}
+};
 
 // const siteUrl = "https://metamonster-dev.github.io/krush-publishing";
 const siteUrl = "http://beerkrushcap.com";
@@ -81,12 +81,16 @@ function pageInit() {
 
 function showFortune(paramsCap) {
   // Hide all fortunes
-  document.querySelectorAll('.fortune1, .fortune2, .fortune3 .fortune4 .fortune5 .fortune6 .fortune7 .fortune8').forEach(function(fortune) {
-      fortune.classList.add('d-none');
-  });
+  document
+    .querySelectorAll(
+      ".fortune1, .fortune2, .fortune3 .fortune4 .fortune5 .fortune6 .fortune7 .fortune8"
+    )
+    .forEach(function (fortune) {
+      fortune.classList.add("d-none");
+    });
   // Show the fortune based on paramsCap
   if (paramsCap) {
-      document.querySelector(`.fortune${paramsCap}`).classList.remove('d-none');
+    document.querySelector(`.fortune${paramsCap}`).classList.remove("d-none");
   }
 }
 
@@ -121,8 +125,8 @@ function getParams() {
 function onKakaoShare() {
   const { Kakao } = window;
   sendApi({
-    "key":"share",
-    "value":1
+    key: "share",
+    value: 1,
   }).then(() => {
     Kakao.Share.sendDefault({
       objectType: "feed",
@@ -145,15 +149,15 @@ function onKakaoShare() {
         },
       ],
     });
-  })
+  });
 }
 
 // URL copy
 function onCopyUrl() {
   sendApi({
-    "key":"copy",
-    "value":1
-  })
+    key: "copy",
+    value: 1,
+  });
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard
       .writeText(window.location.href)
@@ -183,24 +187,24 @@ function onCopyUrl() {
 }
 
 const gotoFortune = () => {
-  const swiperWrapper = document.querySelector('#slider01');
+  const swiperWrapper = document.querySelector("#slider01");
   const swiper = swiperWrapper ? swiperWrapper.swiper : null; // Check if swiperWrapper exists
 
   const activeIndex = swiper.activeIndex; // 현재 활성화된 슬라이드 인덱스
   const activeSlide = swiper.slides[activeIndex]; // 현재 활성화된 슬라이드
 
-  const imgOn = activeSlide.querySelector('.img_on'); // 활성화된 이미지 가져오기
-  const imgValue = imgOn.getAttribute('value');
+  const imgOn = activeSlide.querySelector(".img_on"); // 활성화된 이미지 가져오기
+  const imgValue = imgOn.getAttribute("value");
 
   // cap 값 가져오기
   const capFortune = randomFortune();
   sendApi({
-    "key":"fortune",
-    "value": {
-      "fortune":imgValue,
-      "result":capFortune
-    }
-  })
+    key: "fortune",
+    value: {
+      fortune: imgValue,
+      result: capFortune,
+    },
+  });
   window.location.href = `?cap=${capFortune}`;
 };
 
@@ -208,32 +212,33 @@ const randomFortune = () => {
   // 랜덤으로 숫자 1-8 사이 하나 추출
   const randomNum = Math.floor(Math.random() * 8) + 1;
   return randomNum;
-}
+};
 
 const retry = () => {
   sendApi({
-    "key":"retry",
-    "value":1
-  }).then(() => {
-    window.location.href='/'
-  })
-}
+    key: "retry",
+    value: 1,
+    // }).then(() => {
+  });
+  window.location.href = "/test.html";
+};
 
 const sendApi = (data) => {
-  return new Promise((resolve, reject) => { // 프로미스를 반환
+  return new Promise((resolve, reject) => {
+    // 프로미스를 반환
     $.ajax({
-      url: 'http://local.krush.com:8081/api/data',
-      type: 'POST',
-      contentType: 'application/json',
+      url: "http://local.krush.com:8081/api/data",
+      type: "POST",
+      contentType: "application/json",
       data: JSON.stringify(data),
       success: function (responseData) {
-        console.log('서버로부터의 응답:', responseData);
+        console.log("서버로부터의 응답:", responseData);
         resolve(responseData); // 성공 시 프로미스를 해결
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        console.error('에러 발생:', textStatus);
+        console.error("에러 발생:", textStatus);
         reject(errorThrown); // 오류 시 프로미스를 거부
       },
     });
   });
-}
+};
