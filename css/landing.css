@@ -31,14 +31,14 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 
 /* button */
 .btn {position: relative; display: inline-block; border-radius: 135px; box-shadow: 25px 25px 73px rgba(0, 32, 81, 0.8); z-index: 2;}
-.btn button {display: flex; align-items: center; justify-content: center; gap: 10px; height: 135px; border: 4px solid #003f8e; border-radius: 135px; font-size: 32px; color: #241916; font-weight: 900; letter-spacing: -0.25rem;}
+.btn button, .btn a {display: flex; align-items: center; justify-content: center; gap: 10px; height: 135px; border: 4px solid #003f8e; border-radius: 135px; font-size: 32px; color: #241916; font-weight: 900; letter-spacing: -0.25rem;}
 .btn::before {content: ''; position: absolute; width: 100%; height: 100%; border: 4px solid #003f8e; border-radius: 135px; background: linear-gradient(0deg, #195fd4, #ffffff); margin-top: 10px; z-index: -1;}
 .btn_type01 button {background: linear-gradient(0deg, #fdc327, #fefa05);}
 .btn_type01 button i {display: block; width: 40px; height: 40px; background: url('../img/icon_share.png') no-repeat center / contain;}
 .btn_type02 button {background: linear-gradient(0deg, #91d9ff, #ffffff);}
 .btn_type02 button i {display: block; width: 40px; height: 40px; background: url('../img/icon_reset.png') no-repeat center / contain;}
-.btn_type03 button {width: 100%; border-color: #5c0905; background: linear-gradient(0deg, #d33901, #f86c04); font-size: 42px; color: #ffffff; letter-spacing: 0;}
-.btn_type03 button i {display: block; width: 61px; height: 45px; background: url('../img/icon_game.png') no-repeat center / contain;}
+.btn_type03 a {display: flex; align-items: center; justify-content: center; width: 100%; border-color: #5c0905; background: linear-gradient(0deg, #d33901, #f86c04); font-size: 42px; color: #ffffff; letter-spacing: 0;}
+.btn_type03 a i {display: block; width: 61px; height: 45px; background: url('../img/icon_game.png') no-repeat center / contain;}
 .btn_type03::before {border-color: #5c0905; background: linear-gradient(0deg, #8e300b, #ffffff);}
 
 /* step */
@@ -205,12 +205,12 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
   .tit_area h2 {font-size: 30px; line-height: 1.4;}
   .tit_area h2.ls {letter-spacing: 0;}
   .tit_area p {font-size: 16px;}
-  .btn button {gap: 5px; height: 80px; border-width: 2px; font-size: 16px; letter-spacing: -0.15rem;}
+  .btn button, .btn a {gap: 5px; height: 80px; border-width: 2px; font-size: 16px; letter-spacing: -0.15rem;}
   .btn::before {margin-top: 5px; border-width: 2px;}
   .btn_type01 button i {width: 20px; height: 20px;}
   .btn_type02 button i {width: 20px; height: 20px;}
-  .btn_type03 button {font-size: 20px; letter-spacing: 0;}
-  .btn_type03 button i {width: 35px; height: 26px;}
+  .btn_type03 a {font-size: 20px; letter-spacing: 0;}
+  .btn_type03 a i {width: 35px; height: 26px;}
   .step_area {margin: -10px 0;}
   .step_area ul li p {width: 150px; height: 192px; padding-top: 5px; font-size: 14px;}
   .step_area ul li p b {font-size: 24px;}
