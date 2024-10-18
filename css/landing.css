@@ -206,6 +206,13 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
   .age_wrap .age_content .btns button img {width: 330px;}
 }
 
+@media (max-width: 991px) {
+  .age_wrap .age_content p {font-size: 38px;}
+  .age_wrap .age_content p b {font-size: 48px;}
+  .age_wrap .age_content span {font-size: 16px;}
+  .age_wrap .age_content .btns button img {width: 195px;}
+}
+
 @media (max-width: 767px) {
   .age_wrap .age_content p {font-size: 28px;}
   .age_wrap .age_content p b {font-size: 38px;}
