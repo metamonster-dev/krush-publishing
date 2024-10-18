@@ -4,6 +4,15 @@
 .pc_ver img {width: 100%;}
 .mobile_ver {display: none;}
 
+/*===== AGE =====*/
+.age_wrap {position: fixed; top: 0; left: 0; display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); text-align: center; z-index: 1000;}
+.age_wrap .age_content {padding: 0 16px;}
+.age_wrap .age_content p {font-size: 38px; color: #fff; font-weight: 800; line-height: 1.3; word-break: keep-all;}
+.age_wrap .age_content p b {display: block; font-size: 48px; color: #04c1ff;}
+.age_wrap .age_content span {display: block; margin-top: 16px; font-size: 16px; color: #fff; line-height: 1.4; word-break: keep-all;}
+.age_wrap .age_content .btns {display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 40px;}
+.age_wrap .age_content .btns button img {width: 195px;}
+
 /*===== FOOTER =====*/
 footer {padding: 90px 0 150px; background-color: #20253d; text-align: center;}
 footer img {margin: 0 auto;}
@@ -190,9 +199,20 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 @media (max-width: 1199px) {
   .pc_ver {display: none;}
   .mobile_ver {display: block;}
+
+  .age_wrap .age_content p {font-size: 65px;}
+  .age_wrap .age_content p b {font-size: 82px;}
+  .age_wrap .age_content span {font-size: 26px;}
+  .age_wrap .age_content .btns button img {width: 330px;}
 }
 
 @media (max-width: 767px) {
+  .age_wrap .age_content p {font-size: 28px;}
+  .age_wrap .age_content p b {font-size: 38px;}
+  .age_wrap .age_content span {font-size: 12px;}
+  .age_wrap .age_content .btns {margin-top: 20px; gap: 10px;}
+  .age_wrap .age_content .btns button img {width: 140px;}
+
   footer {padding: 60px 0 90px;}
   footer img {max-width: 170px;}
   footer ul.links {gap: 10px; margin-top: 40px;}

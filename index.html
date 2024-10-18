@@ -33,6 +33,30 @@
     <script src="./js/common.js"></script>
   </head>
   <body>
+    <div class="age_wrap">
+      <div class="age_content">
+        <p class="jalnan">
+          <b>만 19세 이상</b>
+          음주 가능한 연령입니까?
+        </p>
+        <span>
+          경고: 지나친 음주는 뇌졸증, 기억력 손상이나 치매를 유발합니다. <br />
+          임신 중 음주는 기형아 출생 위험을 높입니다.
+        </span>
+        <div class="btns">
+          <button type="button" onclick="$('.age_wrap').hide()">
+            <img src="./img/yes_img.png" alt="YES" />
+          </button>
+          <button
+            type="button"
+            onclick="alert('만 19세 이상만 입장하실 수 있습니다.')"
+          >
+            <img src="./img/no_img.png" alt="NO" />
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="pc_ver">
       <img
         src="./img/pc_img.jpg"
@@ -557,7 +581,10 @@
                   <img src="./img/sec03_img01.jpg" alt="크러시팡 이미지" />
                   <div class="btn_wrap">
                     <div class="btn btn_type03">
-                      <a href="https://krushpang.page.link/KRUSHWeb" target="_blank">
+                      <a
+                        href="https://krushpang.page.link/KRUSHWeb"
+                        target="_blank"
+                      >
                         <i></i><span>게임시작</span>
                       </a>
                     </div>
