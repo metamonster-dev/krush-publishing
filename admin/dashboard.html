@@ -705,8 +705,7 @@
         });
 
         // CSV 헤더 행 추가
-        csvContent += headers.join(',') + '\n';
-
+        csvContent += '\ufeff' + headers.join(',') + '\n';
 
         // 데이터 행 처리 (tbody의 모든 tr)
         statsTable.querySelectorAll('tbody tr').forEach((tr, rowIndex) => {
