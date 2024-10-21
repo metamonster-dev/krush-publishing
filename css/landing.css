@@ -5,7 +5,7 @@
 .mobile_ver {display: none;}
 
 /*===== AGE =====*/
-.age_wrap {position: fixed; top: 0; left: 0; display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); text-align: center; z-index: 1000;}
+.age_wrap {position: fixed; top: 0; left: 0; display: none; align-items: center; justify-content: center; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); text-align: center; z-index: 1000;}
 .age_wrap .age_content {padding: 0 16px;}
 .age_wrap .age_content p {font-size: 38px; color: #fff; font-weight: 800; line-height: 1.3; word-break: keep-all;}
 .age_wrap .age_content p b {display: block; font-size: 48px; color: #04c1ff;}

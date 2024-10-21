@@ -1,5 +1,8 @@
 $(document).ready(function () {
   localStorageInit();
+  const visitCheck = localStorage.getItem("visit");
+  if (!visitCheck) $(".age_wrap").css("display", "flex");
+
   // Swiper Slide
   const swiper1 = new Swiper("#slider01", {
     slidesPerView: 1.6,
@@ -123,7 +126,20 @@ function getParams() {
 
 // KAKAO share
 function onKakaoShare() {
+  const text = [
+    "내가쏠게",
+    "네가좋아",
+    "오늘힘내",
+    "보고싶어",
+    "나랑놀자",
+    "새복많받",
+    "완전반함",
+    "히든하트맵",
+  ];
+  const paramsCap = getParams()?.cap;
   const { Kakao } = window;
+  // console.log(paramsCap, `${siteUrl}/img/cap/sns_img0${paramsCap}.png`);
+
   sendApi({
     key: "share",
     value: 1,
@@ -133,8 +149,8 @@ function onKakaoShare() {
     objectType: "feed",
     content: {
       title: "KRUSH(크러시) - 두근두근 플러팅 운세",
-      description: '오늘의 플러팅 운세는 "내가쏠게"',
-      imageUrl: `${siteUrl}/img/cap/sns_img01.png`,
+      description: `오늘의 플러팅 운세는 "${text[Number(paramsCap) - 1]}"`,
+      imageUrl: `${siteUrl}/img/cap/sns_img0${paramsCap}.png`,
       link: {
         mobileWebUrl: window.location.href,
         webUrl: window.location.href,
