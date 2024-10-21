@@ -332,7 +332,7 @@
 
         try {
             // 실제 API 호출 (URL을 실제 엔드포인트로 변경하세요)
-            const response = await fetch(`http://local.krush.com:8081/api/list?start=${startDate}&end=${endDate}`);
+            const response = await fetch(`http://krush-alb-1650584371.ap-northeast-2.elb.amazonaws.com/api/list?start=${startDate}&end=${endDate}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
