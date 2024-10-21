@@ -1,7 +1,8 @@
 $(document).ready(function () {
   localStorageInit();
+  const paramsCap = getParams()?.cap;
   const visitCheck = localStorage.getItem("visit");
-  if (!visitCheck) $(".age_wrap").css("display", "flex");
+  if (!(paramsCap || visitCheck)) $(".age_wrap").css("display", "flex");
 
   // Swiper Slide
   const swiper1 = new Swiper("#slider01", {
