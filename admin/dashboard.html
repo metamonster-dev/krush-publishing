@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일자별 통계 페이지</title>
+    <style>
+        /* 기본 박스 사이징 설정 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .date-range {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .date-range div {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .date-range input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .form-group.buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .form-group.buttons button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .form-group.buttons button:hover {
+            background-color: #218838;
+        }
+
+        #download-csv {
+            display: none;
+            background-color: #007bff;
+        }
+
+        #download-csv:hover {
+            background-color: #0069d9;
+        }
+
+        #stats {
+            margin-top: 30px;
+            display: none;
+        }
+
+        #stats h2 {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* 반응형 테이블 감싸기 */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            table-layout: auto;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 첫 번째 헤더 행 고정 */
+
+        thead th {
+            position: sticky;
+            top: 0;
+            background-color: #f8f8f8;
+            z-index: 2;
+            /* 소팅 기능을 위한 커서 변경 */
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* 홀수/짝수 행 배경색 */
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        /* 행 호버 효과 */
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* 작은 화면에서 폰트 크기 및 패딩 조정 */
+        @media (max-width: 768px) {
+            th, td {
+                padding: 8px;
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            #stats h2 {
+                font-size: 1.2em;
+            }
+            .form-group.buttons button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        /* 오버레이 스타일 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* 로딩 스피너 스타일 */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* 회전 애니메이션 정의 */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 소팅 화살표 스타일 */
+        .sort-asc::after {
+            content: " ▲";
+            font-size: 12px;
+        }
+
+        .sort-desc::after {
+            content: " ▼";
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>일자별 통계 페이지</h1>
+    <div class="form-group">
+        <div class="date-range">
+            <div>
+                <label for="start-date">시작 날짜:</label>
+                <input type="date" id="start-date" />
+            </div>
+            <div>
+                <label for="end-date">종료 날짜:</label>
+                <input type="date" id="end-date" />
+            </div>
+        </div>
+        <div class="form-group buttons">
+            <button id="load-stats">통계 불러오기</button>
+            <button id="download-csv">CSV 다운로드</button>
+        </div>
+    </div>
+
+    <div id="stats">
+        <h2 id="selected-dates"></h2>
+        <div class="table-responsive">
+            <table id="stats-table">
+                <thead>
+                <tr>
+                    <th rowspan="2" data-column-index="0">날짜</th>
+                    <th rowspan="2" data-column-index="1">방문</th>
+                    <th colspan="4">운세보기</th>
+                    <th colspan="8">운세결과</th>
+                    <th rowspan="2" data-column-index="14">공유하기</th>
+                    <th rowspan="2" data-column-index="15">복사하기</th>
+                    <th rowspan="2" data-column-index="16">다시하기</th>
+                    <th rowspan="2" data-column-index="17">총합</th>
+                </tr>
+                <tr>
+                    <th data-column-index="2">총합</th>
+                    <th data-column-index="3">썸</th>
+                    <th data-column-index="4">친구</th>
+                    <th data-column-index="5">연인</th>
+                    <th data-column-index="6">내가쏠게</th>
+                    <th data-column-index="7">네가좋아</th>
+                    <th data-column-index="8">오늘힘내</th>
+                    <th data-column-index="9">보고싶어</th>
+                    <th data-column-index="10">나랑놀자</th>
+                    <th data-column-index="11">새복많받</th>
+                    <th data-column-index="12">완전반함</th>
+                    <th data-column-index="13">히든하트</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- 데이터 행은 API 통신 후 동적으로 추가됩니다 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- 오버레이 및 로딩 스피너 -->
+<div id="overlay" class="overlay" style="display: none;">
+    <div class="spinner"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const startDateInput = document.getElementById('start-date');
+        const endDateInput = document.getElementById('end-date');
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const todayStr = `${year}-${month}-${day}`;
+
+        // 오늘 날짜를 기본값으로 설정
+        startDateInput.value = todayStr;
+        endDateInput.value = todayStr;
+
+        // 오늘 이후 날짜를 선택하지 못하도록 최대 날짜 설정
+        startDateInput.setAttribute('max', todayStr);
+        endDateInput.setAttribute('max', todayStr);
+
+        // 시작 날짜 변경 시 종료 날짜의 최소값 설정
+        startDateInput.addEventListener('change', function() {
+            const selectedStartDate = startDateInput.value;
+            endDateInput.setAttribute('min', selectedStartDate);
+            if (endDateInput.value < selectedStartDate) {
+                endDateInput.value = selectedStartDate;
+            }
+        });
+
+        // 종료 날짜 변경 시 시작 날짜의 최대값 설정
+        endDateInput.addEventListener('change', function() {
+            const selectedEndDate = endDateInput.value;
+            startDateInput.setAttribute('max', selectedEndDate);
+            if (startDateInput.value > selectedEndDate) {
+                startDateInput.value = selectedEndDate;
+            }
+        });
+    });
+
+    document.getElementById('load-stats').addEventListener('click', async function() {
+        const startDate = document.getElementById('start-date').value;
+        const endDate = document.getElementById('end-date').value;
+
+        if (!startDate || !endDate) {
+            alert("시작 날짜와 종료 날짜를 선택해주세요.");
+            return;
+        }
+
+        if (startDate > endDate) {
+            alert("시작 날짜가 종료 날짜보다 늦을 수 없습니다.");
+            return;
+        }
+
+        // 오버레이 표시
+        document.getElementById('overlay').style.display = 'flex';
+
+        // 선택된 날짜 범위를 표시
+        document.getElementById('selected-dates').innerText = `${formatDate(startDate)} ~ ${formatDate(endDate)}`;
+        document.getElementById('stats').style.display = 'block';
+
+        try {
+            // 실제 API 호출 (URL을 실제 엔드포인트로 변경하세요)
+            const response = await fetch(`http://krush-alb-1650584371.ap-northeast-2.elb.amazonaws.com/api/list?start=${startDate}&end=${endDate}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const apiData = await response.json();
+
+            // API 응답 데이터 구조와 일치하도록 statisticsData 설정
+            const statisticsData = apiData.data;
+
+            // 기존 테이블 내용 완전히 초기화
+            const statsTable = document.getElementById('stats-table');
+            const thead = statsTable.querySelector('thead');
+            const tbody = statsTable.querySelector('tbody');
+
+            // Reset thead to have two rows for headers
+            thead.innerHTML = `
+                <tr>
+                    <th rowspan="2" data-column-index="0">날짜</th>
+                    <th rowspan="2" data-column-index="1">방문</th>
+                    <th colspan="4">운세보기</th>
+                    <th colspan="8">운세결과</th>
+                    <th rowspan="2" data-column-index="14">공유하기</th>
+                    <th rowspan="2" data-column-index="15">복사하기</th>
+                    <th rowspan="2" data-column-index="16">다시하기</th>
+                    <th rowspan="2" data-column-index="17">총합</th>
+                </tr>
+                <tr>
+                    <th data-column-index="2">총합</th>
+                    <th data-column-index="3">썸</th>
+                    <th data-column-index="4">친구</th>
+                    <th data-column-index="5">연인</th>
+                    <th data-column-index="6">내가쏠게</th>
+                    <th data-column-index="7">네가좋아</th>
+                    <th data-column-index="8">오늘힘내</th>
+                    <th data-column-index="9">보고싶어</th>
+                    <th data-column-index="10">나랑놀자</th>
+                    <th data-column-index="11">새복많받</th>
+                    <th data-column-index="12">완전반함</th>
+                    <th data-column-index="13">히든하트</th>
+                </tr>
+            `;
+
+            // Clear existing tbody
+            tbody.innerHTML = '';
+
+            // Initialize totals
+            const totals = {
+                visit: 0,
+                fortune_total: 0, // 운세보기 총합
+                fortune_sseom: 0,
+                fortune_chingu: 0,
+                fortune_yeonin: 0, // '연인'
+                fortune_result_1: 0,
+                fortune_result_2: 0,
+                fortune_result_3: 0,
+                fortune_result_4: 0,
+                fortune_result_5: 0,
+                fortune_result_6: 0,
+                fortune_result_7: 0,
+                fortune_result_8: 0,
+                share: 0,
+                copy: 0,
+                retry: 0,
+                total: 0
+            };
+
+            // Populate tbody with dates and their values per metric
+            for (const [date, metricsObj] of Object.entries(statisticsData)) {
+                const row = document.createElement('tr');
+
+                // 날짜 셀
+                const dateCell = document.createElement('td');
+                dateCell.textContent = date; // 'YYYY-MM-DD' 형식
+                row.appendChild(dateCell);
+
+                // 방문 셀
+                const visit = metricsObj.visit || 0;
+                const visitCell = document.createElement('td');
+                visitCell.textContent = visit;
+                row.appendChild(visitCell);
+                totals.visit += visit;
+
+                // 운세보기 총합 셀
+                const fortuneSseom = (metricsObj.fortune && metricsObj.fortune['썸']) || 0;
+                const fortuneChingu = (metricsObj.fortune && metricsObj.fortune['친구']) || 0;
+                const fortuneYeonin = (metricsObj.fortune && metricsObj.fortune['연인']) || 0;
+                const fortuneTotal = fortuneSseom + fortuneChingu + fortuneYeonin;
+
+                const fortuneTotalCell = document.createElement('td');
+                fortuneTotalCell.textContent = fortuneTotal;
+                row.appendChild(fortuneTotalCell);
+                totals.fortune_total += fortuneTotal;
+
+                // 썸 셀
+                const fortuneSseomCell = document.createElement('td');
+                fortuneSseomCell.textContent = fortuneSseom;
+                row.appendChild(fortuneSseomCell);
+                totals.fortune_sseom += fortuneSseom;
+
+                // 친구 셀
+                const fortuneChinguCell = document.createElement('td');
+                fortuneChinguCell.textContent = fortuneChingu;
+                row.appendChild(fortuneChinguCell);
+                totals.fortune_chingu += fortuneChingu;
+
+                // 연인 셀
+                const fortuneYeoninCell = document.createElement('td');
+                fortuneYeoninCell.textContent = fortuneYeonin;
+                row.appendChild(fortuneYeoninCell);
+                totals.fortune_yeonin += fortuneYeonin;
+
+                // 운세결과 1 셀
+                const fortuneResult1 = metricsObj.fortune_result_1 || 0;
+                const fortuneResult1Cell = document.createElement('td');
+                fortuneResult1Cell.textContent = fortuneResult1;
+                row.appendChild(fortuneResult1Cell);
+                totals.fortune_result_1 += fortuneResult1;
+
+                // 운세결과 2 셀
+                const fortuneResult2 = metricsObj.fortune_result_2 || 0;
+                const fortuneResult2Cell = document.createElement('td');
+                fortuneResult2Cell.textContent = fortuneResult2;
+                row.appendChild(fortuneResult2Cell);
+                totals.fortune_result_2 += fortuneResult2;
+
+                // 운세결과 3 셀
+                const fortuneResult3 = metricsObj.fortune_result_3 || 0;
+                const fortuneResult3Cell = document.createElement('td');
+                fortuneResult3Cell.textContent = fortuneResult3;
+                row.appendChild(fortuneResult3Cell);
+                totals.fortune_result_3 += fortuneResult3;
+
+                // 운세결과 4 셀
+                const fortuneResult4 = metricsObj.fortune_result_4 || 0;
+                const fortuneResult4Cell = document.createElement('td');
+                fortuneResult4Cell.textContent = fortuneResult4;
+                row.appendChild(fortuneResult4Cell);
+                totals.fortune_result_4 += fortuneResult4;
+
+                // 운세결과 5 셀
+                const fortuneResult5 = metricsObj.fortune_result_5 || 0;
+                const fortuneResult5Cell = document.createElement('td');
+                fortuneResult5Cell.textContent = fortuneResult5;
+                row.appendChild(fortuneResult5Cell);
+                totals.fortune_result_5 += fortuneResult5;
+
+                // 운세결과 6 셀
+                const fortuneResult6 = metricsObj.fortune_result_6 || 0;
+                const fortuneResult6Cell = document.createElement('td');
+                fortuneResult6Cell.textContent = fortuneResult6;
+                row.appendChild(fortuneResult6Cell);
+                totals.fortune_result_6 += fortuneResult6;
+
+                // 운세결과 7 셀
+                const fortuneResult7 = metricsObj.fortune_result_7 || 0;
+                const fortuneResult7Cell = document.createElement('td');
+                fortuneResult7Cell.textContent = fortuneResult7;
+                row.appendChild(fortuneResult7Cell);
+                totals.fortune_result_7 += fortuneResult7;
+
+                // 운세결과 8 셀
+                const fortuneResult8 = metricsObj.fortune_result_8 || 0;
+                const fortuneResult8Cell = document.createElement('td');
+                fortuneResult8Cell.textContent = fortuneResult8;
+                row.appendChild(fortuneResult8Cell);
+                totals.fortune_result_8 += fortuneResult8;
+
+                // 공유하기 셀
+                const share = metricsObj.share || 0;
+                const shareCell = document.createElement('td');
+                shareCell.textContent = share;
+                row.appendChild(shareCell);
+                totals.share += share;
+
+                // 복사하기 셀
+                const copy = metricsObj.copy || 0;
+                const copyCell = document.createElement('td');
+                copyCell.textContent = copy;
+                row.appendChild(copyCell);
+                totals.copy += copy;
+
+                // 다시하기 셀
+                const retry = metricsObj.retry || 0;
+                const retryCell = document.createElement('td');
+                retryCell.textContent = retry;
+                row.appendChild(retryCell);
+                totals.retry += retry;
+
+                // 날짜별 총합 셀
+                const dateTotal = visit + fortuneTotal + share + copy + retry + fortuneResult1 + fortuneResult2 + fortuneResult3 + fortuneResult4 + fortuneResult5 + fortuneResult6 + fortuneResult7 + fortuneResult8;
+                const totalCell = document.createElement('td');
+                totalCell.textContent = dateTotal;
+                row.appendChild(totalCell);
+                totals.total += dateTotal;
+
+                tbody.appendChild(row);
+            }
+
+            // Add total row
+            const totalRow = document.createElement('tr');
+            totalRow.classList.add('total-row'); // 총합 행에 클래스 추가
+
+            // '총합' 셀
+            const totalLabelCell = document.createElement('td');
+            totalLabelCell.textContent = '총합';
+            totalLabelCell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalLabelCell);
+
+            // 방문 총합 셀
+            const totalVisitCell = document.createElement('td');
+            totalVisitCell.textContent = totals.visit;
+            totalVisitCell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalVisitCell);
+
+            // 운세보기 총합 셀
+            const totalFortuneTotalCell = document.createElement('td');
+            totalFortuneTotalCell.textContent = totals.fortune_total;
+            totalFortuneTotalCell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneTotalCell);
+
+            // 썸 총합 셀
+            const totalFortuneSseomCell = document.createElement('td');
+            totalFortuneSseomCell.textContent = totals.fortune_sseom;
+            totalFortuneSseomCell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneSseomCell);
+
+            // 친구 총합 셀
+            const totalFortuneChinguCell = document.createElement('td');
+            totalFortuneChinguCell.textContent = totals.fortune_chingu;
+            totalFortuneChinguCell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneChinguCell);
+
+            // 연인 총합 셀
+            const totalFortuneYeoninCell = document.createElement('td');
+            totalFortuneYeoninCell.textContent = totals.fortune_yeonin;
+            totalFortuneYeoninCell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneYeoninCell);
+
+            // 운세결과 1 총합 셀
+            const totalFortuneResult1Cell = document.createElement('td');
+            totalFortuneResult1Cell.textContent = totals.fortune_result_1;
+            totalFortuneResult1Cell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneResult1Cell);
+
+            // 운세결과 2 총합 셀
+            const totalFortuneResult2Cell = document.createElement('td');
+            totalFortuneResult2Cell.textContent = totals.fortune_result_2;
+            totalFortuneResult2Cell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneResult2Cell);
+
+            // 운세결과 3 총합 셀
+            const totalFortuneResult3Cell = document.createElement('td');
+            totalFortuneResult3Cell.textContent = totals.fortune_result_3;
+            totalFortuneResult3Cell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneResult3Cell);
+
+            // 운세결과 4 총합 셀
+            const totalFortuneResult4Cell = document.createElement('td');
+            totalFortuneResult4Cell.textContent = totals.fortune_result_4;
+            totalFortuneResult4Cell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneResult4Cell);
+
+            // 운세결과 5 총합 셀
+            const totalFortuneResult5Cell = document.createElement('td');
+            totalFortuneResult5Cell.textContent = totals.fortune_result_5;
+            totalFortuneResult5Cell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneResult5Cell);
+
+            // 운세결과 6 총합 셀
+            const totalFortuneResult6Cell = document.createElement('td');
+            totalFortuneResult6Cell.textContent = totals.fortune_result_6;
+            totalFortuneResult6Cell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneResult6Cell);
+
+            // 운세결과 7 총합 셀
+            const totalFortuneResult7Cell = document.createElement('td');
+            totalFortuneResult7Cell.textContent = totals.fortune_result_7;
+            totalFortuneResult7Cell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneResult7Cell);
+
+            // 운세결과 8 총합 셀
+            const totalFortuneResult8Cell = document.createElement('td');
+            totalFortuneResult8Cell.textContent = totals.fortune_result_8;
+            totalFortuneResult8Cell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalFortuneResult8Cell);
+
+            // 공유하기 총합 셀
+            const totalShareCell = document.createElement('td');
+            totalShareCell.textContent = totals.share;
+            totalShareCell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalShareCell);
+
+            // 복사하기 총합 셀
+            const totalCopyCell = document.createElement('td');
+            totalCopyCell.textContent = totals.copy;
+            totalCopyCell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalCopyCell);
+
+            // 다시하기 총합 셀
+            const totalRetryCell = document.createElement('td');
+            totalRetryCell.textContent = totals.retry;
+            totalRetryCell.style.fontWeight = 'bold';
+            totalRow.appendChild(totalRetryCell);
+
+            // 전체 총합 셀
+            const overallTotalCell = document.createElement('td');
+            overallTotalCell.textContent = totals.total;
+            overallTotalCell.style.fontWeight = 'bold';
+            totalRow.appendChild(overallTotalCell);
+
+            tbody.appendChild(totalRow);
+
+            // CSV 다운로드 버튼 표시 및 활성화
+            const downloadBtn = document.getElementById('download-csv');
+            if (downloadBtn) {
+                downloadBtn.style.display = 'inline-block'; // 버튼 표시
+                downloadBtn.disabled = false; // 버튼 활성화
+            } else {
+                console.error("Element with id 'download-csv' not found.");
+            }
+
+            // 소팅 기능 활성화
+            attachSortListeners();
+
+        } catch (error) {
+            console.error('통계 데이터를 불러오는 중 오류 발생:', error);
+            alert("통계 데이터를 불러오는 데 실패했습니다. 나중에 다시 시도해주세요.");
+        } finally {
+            // 오버레이 숨기기
+            document.getElementById('overlay').style.display = 'none';
+        }
+    });
+
+    // CSV 다운로드 기능 수정
+    document.getElementById('download-csv').addEventListener('click', function() {
+        const statsTable = document.getElementById('stats-table');
+        const rows = statsTable.querySelectorAll('tr');
+        let csvContent = '';
+
+        // 첫 번째 행은 두 개의 헤더 행을 병합하여 생성
+        const headerRows = statsTable.querySelectorAll('thead tr');
+        const headers = [];
+
+        // 병합된 헤더 생성
+        const firstHeaderRow = headerRows[0].querySelectorAll('th');
+        const secondHeaderRow = headerRows[1].querySelectorAll('th');
+        let subHeaderIndex = 0; // 두 번째 헤더 행의 현재 인덱스
+
+        firstHeaderRow.forEach((th) => {
+            const rowspan = parseInt(th.getAttribute('rowspan') || '1', 10);
+            const colspan = parseInt(th.getAttribute('colspan') || '1', 10);
+            const headerText = th.textContent.trim();
+
+            if (rowspan > 1) {
+                // rowspan이 2 이상인 경우, 두 번째 헤더 행과 병합하지 않음
+                for (let i = 0; i < colspan; i++) {
+                    headers.push(headerText);
+                }
+            } else {
+                // colspan을 고려하여 두 번째 헤더 행과 병합
+                for (let i = 0; i < colspan; i++) {
+                    if (subHeaderIndex < secondHeaderRow.length) {
+                        const subHeader = secondHeaderRow[subHeaderIndex].textContent.trim();
+                        headers.push(`${headerText} ${subHeader}`);
+                        subHeaderIndex++;
+                    }
+                }
+            }
+        });
+
+        // CSV 헤더 행 추가
+        csvContent += headers.join(',') + '\n';
+
+
+        // 데이터 행 처리 (tbody의 모든 tr)
+        statsTable.querySelectorAll('tbody tr').forEach((tr, rowIndex) => {
+            const cols = tr.querySelectorAll('td');
+            const rowData = [];
+            cols.forEach(col => {
+                // 데이터 내의 따옴표를 이중 따옴표로 변경
+                let data = col.textContent.replace(/"/g, '""');
+                // 데이터에 쉼표, 줄바꿈, 따옴표가 포함되어 있으면 따옴표로 감싸기
+                if (data.search(/("|,|\n)/g) >= 0) {
+                    data = `"${data}"`;
+                }
+                rowData.push(data);
+            });
+            csvContent += rowData.join(',') + '\n';
+        });
+
+        // CSV 내용을 Blob 객체로 생성
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+
+        // 임시 링크를 생성하여 다운로드 트리거
+        const link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'KrushEvent.csv');
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+
+    // 날짜 형식을 보기 좋게 변경하는 함수
+    function formatDate(dateStr) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('ko-KR', options);
+    }
+
+    // 페이지 로드 시 자동으로 오늘 날짜의 통계를 로드하려면 아래 주석을 해제하세요.
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('load-stats').click();
+    });
+
+    // 소팅 기능을 위한 함수
+    function sortTable(table, columnIndex, ascending) {
+        const tbody = table.tBodies[0];
+        const rows = Array.from(tbody.querySelectorAll('tr')).filter(row => !row.classList.contains('total-row')); // 총합 행 제외
+
+        // Determine the data type
+        const getCellValue = (row, index) => {
+            const cell = row.children[index];
+            const text = cell.textContent.trim();
+            // Check if it's a date
+            const date = new Date(text);
+            if (!isNaN(date)) {
+                return date;
+            }
+            // Check if it's a number
+            const num = parseFloat(text.replace(/,/g, ''));
+            return isNaN(num) ? text.toLowerCase() : num;
+        };
+
+        rows.sort((a, b) => {
+            const aValue = getCellValue(a, columnIndex);
+            const bValue = getCellValue(b, columnIndex);
+            if (aValue > bValue) {
+                return ascending ? 1 : -1;
+            } else if (aValue < bValue) {
+                return ascending ? -1 : 1;
+            }
+            return 0;
+        });
+
+        // Remove existing rows
+        rows.forEach(row => tbody.removeChild(row));
+
+        // Append sorted rows
+        rows.forEach(row => tbody.appendChild(row));
+
+        // Append the total row at the end
+        const totalRow = tbody.querySelector('.total-row');
+        if (totalRow) {
+            tbody.appendChild(totalRow);
+        }
+    }
+
+    // 소팅 이벤트 리스너를 각 헤더에 추가하는 함수
+    function attachSortListeners() {
+        const table = document.getElementById('stats-table');
+        const headers = table.querySelectorAll('thead th[data-column-index]');
+        headers.forEach((th) => {
+            th.addEventListener('click', function() {
+                const columnIndex = parseInt(th.getAttribute('data-column-index'), 10);
+                if (isNaN(columnIndex)) return;
+
+                // 현재 소팅 상태 확인
+                const currentSort = th.getAttribute('data-sort') || 'none';
+                const ascending = currentSort !== 'asc';
+
+                // 모든 헤더에서 소팅 상태 제거
+                headers.forEach(header => {
+                    header.removeAttribute('data-sort');
+                    header.classList.remove('sort-asc', 'sort-desc');
+                });
+
+                // 현재 클릭된 헤더에 소팅 상태 추가
+                th.setAttribute('data-sort', ascending ? 'asc' : 'desc');
+                th.classList.add(ascending ? 'sort-asc' : 'sort-desc');
+
+                // 테이블 소팅
+                sortTable(table, columnIndex, ascending);
+            });
+        });
+    }
+</script>
+</body>
+</html>
