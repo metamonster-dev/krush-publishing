@@ -194,12 +194,13 @@
         /* 모바일 화면에서 날짜 입력 필드 레이아웃 조정 */
         @media (max-width: 600px) {
             .date-range {
-                flex-direction: column;
+                /*flex-direction: column;*/
             }
             .date-range div {
                 min-width: 100%;
             }
             .date-range input[type="date"] {
+                appearance: none;
                 padding: 8px;
                 font-size: 14px;
             }
@@ -288,6 +289,13 @@
 </div>
 
 <script>
+    // 숫자 포맷팅 함수 정의
+    function formatNumber(num) {
+        if (typeof num !== 'number') {
+            num = parseFloat(num.replace(/,/g, '')) || 0;
+        }
+        return num.toLocaleString('ko-KR');
+    }
     document.addEventListener('DOMContentLoaded', function() {
         const startDateInput = document.getElementById('start-date');
         const endDateInput = document.getElementById('end-date');
@@ -347,7 +355,8 @@
 
         try {
             // 실제 API 호출 (URL을 실제 엔드포인트로 변경하세요)
-            const response = await fetch(`http://krush-alb-1650584371.ap-northeast-2.elb.amazonaws.com/api/list?start=${startDate}&end=${endDate}`, {
+            // const response = await fetch(`http://krush-alb-1650584371.ap-northeast-2.elb.amazonaws.com/api/list?start=${startDate}&end=${endDate}`, {
+            const response = await fetch(`http://local.krush.com:8081/api/list?start=${startDate}&end=${endDate}`, {
                 method: 'GET'
             });
             if (!response.ok) {
@@ -427,7 +436,7 @@
                 // 방문 셀
                 const visit = metricsObj.visit || 0;
                 const visitCell = document.createElement('td');
-                visitCell.textContent = visit;
+                visitCell.textContent = formatNumber(visit);
                 row.appendChild(visitCell);
                 totals.visit += visit;
 
@@ -438,109 +447,109 @@
                 const fortuneTotal = fortuneSseom + fortuneChingu + fortuneYeonin;
 
                 const fortuneTotalCell = document.createElement('td');
-                fortuneTotalCell.textContent = fortuneTotal;
+                fortuneTotalCell.textContent = formatNumber(fortuneTotal);
                 row.appendChild(fortuneTotalCell);
                 totals.fortune_total += fortuneTotal;
 
                 // 썸 셀
                 const fortuneSseomCell = document.createElement('td');
-                fortuneSseomCell.textContent = fortuneSseom;
+                fortuneSseomCell.textContent = formatNumber(fortuneSseom);
                 row.appendChild(fortuneSseomCell);
                 totals.fortune_sseom += fortuneSseom;
 
                 // 친구 셀
                 const fortuneChinguCell = document.createElement('td');
-                fortuneChinguCell.textContent = fortuneChingu;
+                fortuneChinguCell.textContent = formatNumber(fortuneChingu);
                 row.appendChild(fortuneChinguCell);
                 totals.fortune_chingu += fortuneChingu;
 
                 // 연인 셀
                 const fortuneYeoninCell = document.createElement('td');
-                fortuneYeoninCell.textContent = fortuneYeonin;
+                fortuneYeoninCell.textContent = formatNumber(fortuneYeonin);
                 row.appendChild(fortuneYeoninCell);
                 totals.fortune_yeonin += fortuneYeonin;
 
                 // 운세결과 1 셀
                 const fortuneResult1 = metricsObj.fortune_result_1 || 0;
                 const fortuneResult1Cell = document.createElement('td');
-                fortuneResult1Cell.textContent = fortuneResult1;
+                fortuneResult1Cell.textContent = formatNumber(fortuneResult1);
                 row.appendChild(fortuneResult1Cell);
                 totals.fortune_result_1 += fortuneResult1;
 
                 // 운세결과 2 셀
                 const fortuneResult2 = metricsObj.fortune_result_2 || 0;
                 const fortuneResult2Cell = document.createElement('td');
-                fortuneResult2Cell.textContent = fortuneResult2;
+                fortuneResult2Cell.textContent = formatNumber(fortuneResult2);
                 row.appendChild(fortuneResult2Cell);
                 totals.fortune_result_2 += fortuneResult2;
 
                 // 운세결과 3 셀
                 const fortuneResult3 = metricsObj.fortune_result_3 || 0;
                 const fortuneResult3Cell = document.createElement('td');
-                fortuneResult3Cell.textContent = fortuneResult3;
+                fortuneResult3Cell.textContent = formatNumber(fortuneResult3);
                 row.appendChild(fortuneResult3Cell);
                 totals.fortune_result_3 += fortuneResult3;
 
                 // 운세결과 4 셀
                 const fortuneResult4 = metricsObj.fortune_result_4 || 0;
                 const fortuneResult4Cell = document.createElement('td');
-                fortuneResult4Cell.textContent = fortuneResult4;
+                fortuneResult4Cell.textContent = formatNumber(fortuneResult4);
                 row.appendChild(fortuneResult4Cell);
                 totals.fortune_result_4 += fortuneResult4;
 
                 // 운세결과 5 셀
                 const fortuneResult5 = metricsObj.fortune_result_5 || 0;
                 const fortuneResult5Cell = document.createElement('td');
-                fortuneResult5Cell.textContent = fortuneResult5;
+                fortuneResult5Cell.textContent = formatNumber(fortuneResult5);
                 row.appendChild(fortuneResult5Cell);
                 totals.fortune_result_5 += fortuneResult5;
 
                 // 운세결과 6 셀
                 const fortuneResult6 = metricsObj.fortune_result_6 || 0;
                 const fortuneResult6Cell = document.createElement('td');
-                fortuneResult6Cell.textContent = fortuneResult6;
+                fortuneResult6Cell.textContent = formatNumber(fortuneResult6);
                 row.appendChild(fortuneResult6Cell);
                 totals.fortune_result_6 += fortuneResult6;
 
                 // 운세결과 7 셀
                 const fortuneResult7 = metricsObj.fortune_result_7 || 0;
                 const fortuneResult7Cell = document.createElement('td');
-                fortuneResult7Cell.textContent = fortuneResult7;
+                fortuneResult7Cell.textContent = formatNumber(fortuneResult7);
                 row.appendChild(fortuneResult7Cell);
                 totals.fortune_result_7 += fortuneResult7;
 
                 // 운세결과 8 셀
                 const fortuneResult8 = metricsObj.fortune_result_8 || 0;
                 const fortuneResult8Cell = document.createElement('td');
-                fortuneResult8Cell.textContent = fortuneResult8;
+                fortuneResult8Cell.textContent = formatNumber(fortuneResult8);
                 row.appendChild(fortuneResult8Cell);
                 totals.fortune_result_8 += fortuneResult8;
 
                 // 공유하기 셀
                 const share = metricsObj.share || 0;
                 const shareCell = document.createElement('td');
-                shareCell.textContent = share;
+                shareCell.textContent = formatNumber(share);
                 row.appendChild(shareCell);
                 totals.share += share;
 
                 // 복사하기 셀
                 const copy = metricsObj.copy || 0;
                 const copyCell = document.createElement('td');
-                copyCell.textContent = copy;
+                copyCell.textContent = formatNumber(copy);
                 row.appendChild(copyCell);
                 totals.copy += copy;
 
                 // 다시하기 셀
                 const retry = metricsObj.retry || 0;
                 const retryCell = document.createElement('td');
-                retryCell.textContent = retry;
+                retryCell.textContent = formatNumber(retry);
                 row.appendChild(retryCell);
                 totals.retry += retry;
 
                 // 날짜별 총합 셀
                 const dateTotal = visit + fortuneTotal + share + copy + retry + fortuneResult1 + fortuneResult2 + fortuneResult3 + fortuneResult4 + fortuneResult5 + fortuneResult6 + fortuneResult7 + fortuneResult8;
                 const totalCell = document.createElement('td');
-                totalCell.textContent = dateTotal;
+                totalCell.textContent = formatNumber(dateTotal);
                 row.appendChild(totalCell);
                 totals.total += dateTotal;
 
@@ -559,103 +568,103 @@
 
             // 방문 총합 셀
             const totalVisitCell = document.createElement('td');
-            totalVisitCell.textContent = totals.visit;
+            totalVisitCell.textContent = formatNumber(totals.visit);
             totalVisitCell.style.fontWeight = 'bold';
             totalRow.appendChild(totalVisitCell);
 
             // 운세보기 총합 셀
             const totalFortuneTotalCell = document.createElement('td');
-            totalFortuneTotalCell.textContent = totals.fortune_total;
+            totalFortuneTotalCell.textContent = formatNumber(totals.fortune_total);
             totalFortuneTotalCell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneTotalCell);
 
             // 썸 총합 셀
             const totalFortuneSseomCell = document.createElement('td');
-            totalFortuneSseomCell.textContent = totals.fortune_sseom;
+            totalFortuneSseomCell.textContent = formatNumber(totals.fortune_sseom);
             totalFortuneSseomCell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneSseomCell);
 
             // 친구 총합 셀
             const totalFortuneChinguCell = document.createElement('td');
-            totalFortuneChinguCell.textContent = totals.fortune_chingu;
+            totalFortuneChinguCell.textContent = formatNumber(totals.fortune_chingu);
             totalFortuneChinguCell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneChinguCell);
 
             // 연인 총합 셀
             const totalFortuneYeoninCell = document.createElement('td');
-            totalFortuneYeoninCell.textContent = totals.fortune_yeonin;
+            totalFortuneYeoninCell.textContent = formatNumber(totals.fortune_yeonin);
             totalFortuneYeoninCell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneYeoninCell);
 
             // 운세결과 1 총합 셀
             const totalFortuneResult1Cell = document.createElement('td');
-            totalFortuneResult1Cell.textContent = totals.fortune_result_1;
+            totalFortuneResult1Cell.textContent = formatNumber(totals.fortune_result_1);
             totalFortuneResult1Cell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneResult1Cell);
 
             // 운세결과 2 총합 셀
             const totalFortuneResult2Cell = document.createElement('td');
-            totalFortuneResult2Cell.textContent = totals.fortune_result_2;
+            totalFortuneResult2Cell.textContent = formatNumber(totals.fortune_result_2);
             totalFortuneResult2Cell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneResult2Cell);
 
             // 운세결과 3 총합 셀
             const totalFortuneResult3Cell = document.createElement('td');
-            totalFortuneResult3Cell.textContent = totals.fortune_result_3;
+            totalFortuneResult3Cell.textContent = formatNumber(totals.fortune_result_3);
             totalFortuneResult3Cell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneResult3Cell);
 
             // 운세결과 4 총합 셀
             const totalFortuneResult4Cell = document.createElement('td');
-            totalFortuneResult4Cell.textContent = totals.fortune_result_4;
+            totalFortuneResult4Cell.textContent = formatNumber(totals.fortune_result_4);
             totalFortuneResult4Cell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneResult4Cell);
 
             // 운세결과 5 총합 셀
             const totalFortuneResult5Cell = document.createElement('td');
-            totalFortuneResult5Cell.textContent = totals.fortune_result_5;
+            totalFortuneResult5Cell.textContent = formatNumber(totals.fortune_result_5);
             totalFortuneResult5Cell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneResult5Cell);
 
             // 운세결과 6 총합 셀
             const totalFortuneResult6Cell = document.createElement('td');
-            totalFortuneResult6Cell.textContent = totals.fortune_result_6;
+            totalFortuneResult6Cell.textContent = formatNumber(totals.fortune_result_6);
             totalFortuneResult6Cell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneResult6Cell);
 
             // 운세결과 7 총합 셀
             const totalFortuneResult7Cell = document.createElement('td');
-            totalFortuneResult7Cell.textContent = totals.fortune_result_7;
+            totalFortuneResult7Cell.textContent = formatNumber(totals.fortune_result_7);
             totalFortuneResult7Cell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneResult7Cell);
 
             // 운세결과 8 총합 셀
             const totalFortuneResult8Cell = document.createElement('td');
-            totalFortuneResult8Cell.textContent = totals.fortune_result_8;
+            totalFortuneResult8Cell.textContent = formatNumber(totals.fortune_result_8);
             totalFortuneResult8Cell.style.fontWeight = 'bold';
             totalRow.appendChild(totalFortuneResult8Cell);
 
             // 공유하기 총합 셀
             const totalShareCell = document.createElement('td');
-            totalShareCell.textContent = totals.share;
+            totalShareCell.textContent = formatNumber(totals.share);
             totalShareCell.style.fontWeight = 'bold';
             totalRow.appendChild(totalShareCell);
 
             // 복사하기 총합 셀
             const totalCopyCell = document.createElement('td');
-            totalCopyCell.textContent = totals.copy;
+            totalCopyCell.textContent = formatNumber(totals.copy);
             totalCopyCell.style.fontWeight = 'bold';
             totalRow.appendChild(totalCopyCell);
 
             // 다시하기 총합 셀
             const totalRetryCell = document.createElement('td');
-            totalRetryCell.textContent = totals.retry;
+            totalRetryCell.textContent = formatNumber(totals.retry);
             totalRetryCell.style.fontWeight = 'bold';
             totalRow.appendChild(totalRetryCell);
 
             // 전체 총합 셀
             const overallTotalCell = document.createElement('td');
-            overallTotalCell.textContent = totals.total;
+            overallTotalCell.textContent = formatNumber(totals.total);
             overallTotalCell.style.fontWeight = 'bold';
             totalRow.appendChild(overallTotalCell);
 
