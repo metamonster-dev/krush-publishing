@@ -40,7 +40,7 @@ $(document).ready(function () {
 
   // KAKAO
   Kakao.cleanup();
-  Kakao.init("2acfc4576e78cb295c47df69625db60b");
+  Kakao.init("d15e72c110b30e7dc09cd0f70d94d298");
   // console.log(Kakao.isInitialized());
 });
 
