@@ -158,6 +158,8 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .section07 .text_area span {display: block; font-size: 26px; color: #fff; font-weight: 500;}
 .section07 ul {display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 50px;}
 .section07 ul li {width: calc((100% - 10px * 2) / 3);}
+.section07 ul li a {position: relative; display: block; padding-bottom: 100%; overflow: hidden;}
+.section07 ul li a img {position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 /* SECTION 08 */
 .section08 {padding: 110px 0 140px;}
