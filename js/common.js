@@ -71,7 +71,7 @@ function pageInit() {
 
   if (paramsCap) {
     const divOffset =
-      $(".section08").offset().top + $(".section08").outerHeight() - 20;
+      $(".section03").offset().top + $(".section03").outerHeight() - 20;
 
     $("html, body").animate({ scrollTop: divOffset }, 400);
     $(".step_section#step02").removeClass("d-none");
