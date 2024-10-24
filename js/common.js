@@ -41,7 +41,7 @@ $(document).ready(function () {
 
   // KAKAO
   Kakao.cleanup();
-  Kakao.init("d15e72c110b30e7dc09cd0f70d94d298");
+  Kakao.init("16fb84d620f93be3539356b7e4aff8b2");
   // console.log(Kakao.isInitialized());
 });
 
@@ -151,7 +151,7 @@ function onKakaoShare() {
     content: {
       title: "KRUSH(크러시) - 두근두근 플러팅 운세",
       description: `오늘의 플러팅 운세는 "${text[Number(paramsCap) - 1]}"`,
-      imageUrl: `${siteUrl}/img/cap/sns_img0${paramsCap}.png`,
+      imageUrl: `${siteUrl}/img/cap/sns_img0${paramsCap}.jpg`,
       link: {
         mobileWebUrl: window.location.href,
         webUrl: window.location.href,
