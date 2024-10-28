@@ -41,7 +41,7 @@ $(document).ready(function () {
 
   // KAKAO
   Kakao.cleanup();
-  Kakao.init("16fb84d620f93be3539356b7e4aff8b2");
+  Kakao.init("35235c7628a744084a6bdc028c0ff6c8");
   // console.log(Kakao.isInitialized());
 });
 
@@ -135,7 +135,7 @@ function onKakaoShare() {
     "나랑놀자",
     "새복많받",
     "완전반함",
-    "히든하트맵",
+    "하트",
   ];
   const paramsCap = getParams()?.cap;
   const { Kakao } = window;
