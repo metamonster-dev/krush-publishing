@@ -237,7 +237,7 @@ const retry = () => {
     value: 1,
     // }).then(() => {
   });
-  window.location.href = "/test.html";
+  window.location.href = "/";
 };
 
 const sendApi = (data) => {
