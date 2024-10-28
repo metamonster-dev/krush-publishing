@@ -5,7 +5,7 @@
 .mobile_ver {display: none;}
 
 /*===== AGE =====*/
-.age_wrap {position: fixed; top: 0; left: 0; display: none; align-items: center; justify-content: center; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); text-align: center; z-index: 1000;}
+.age_wrap {position: fixed; top: 0; left: 0; display: none; align-items: center; justify-content: center; width: 100vw; height: 100%; background: rgba(0,0,0,0.9); text-align: center; z-index: 1000;}
 .age_wrap .age_content {padding: 0 16px;}
 .age_wrap .age_content p {font-size: 38px; color: #fff; font-weight: 800; line-height: 1.3; word-break: keep-all;}
 .age_wrap .age_content p b {display: block; font-size: 48px; color: #04c1ff;}
@@ -150,7 +150,7 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 
 /* SECTION 07 */
 .d12 {top: -40%; right: -4%; width: 13.92%;}
-.section07 {padding: 160px 0 222px;}
+.section07 {padding: 160px 0 138px;}
 .section07 .tit_area {position: relative;}
 .section07 .deco_area {position: relative; z-index: 2;}
 .section07 .deco_area::before {content: ''; position: absolute; top: 8%; left: -13%; width: 121%; height: 101%; background: url('../img/sec07_bg_deco.png') no-repeat center / contain; z-index: -1;}
@@ -161,6 +161,8 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .section07 ul li {width: calc((100% - 10px * 2) / 3);}
 .section07 ul li a {position: relative; display: block; padding-bottom: 100%; overflow: hidden;}
 .section07 ul li a img {position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.section07 .desc_area {position: relative; margin-top: 60px; text-align: center; z-index: 2;}
+.section07 .desc_area p {font-size: 18px; color: #fff; word-break: keep-all;}
 
 /* SECTION 08 */
 .section08 {padding: 110px 0 140px;}
@@ -172,7 +174,7 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
 .section08 .text_area ul li {width: 25%; padding: 0 8px;}
 
 /*===== MODAL =====*/
-.modal_wrap {position: fixed; top: 0; left: 0; display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 100; opacity: 0; visibility: hidden; transition: all 0.5s;}
+.modal_wrap {position: fixed; top: 0; left: 0; display: flex; align-items: center; justify-content: center; width: 100vw; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; opacity: 0; visibility: hidden; transition: all 0.5s;}
 .modal_wrap.show {opacity: 1; visibility: visible;}
 .modal_wrap .modal_area_bg {position: relative; width: 90%; max-width: 690px; z-index: 2; box-shadow: 25px 25px 73px rgba(0, 32, 81, 0.8);}
 .modal_wrap .modal_area_bg::before {content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 2px solid #133301; border-radius: 10px; background: linear-gradient(0deg, #223d6c, #ffffff); margin-top: 10px; z-index: -1;}
@@ -284,12 +286,14 @@ footer ul.text li:not(:first-of-type,:last-of-type)::after {content: ''; positio
   .section05 {padding: 120px 0 100px;}
   .section05 .video_area {margin-top: 30px;}
   .section06 .img_area img {max-width: 116%; margin-left: -7.5%;}
-  .section07 {padding: 80px 0 110px;}
+  .section07 {padding: 80px 0;}
   .section07 .text_area {margin-top: 30px; padding: 12px 20px 12px 15px; border-radius: 10px;}
   .section07 .text_area p {padding: 4px 15px; font-size: 12px;}
   .section07 .text_area span {font-size: 14px;}
   .section07 ul {gap: 5px; margin-top: 30px;}
   .section07 ul li {width: calc((100% - 5px * 2) / 3);}
+  .section07 .desc_area {margin-top: 40px;}
+  .section07 .desc_area p {font-size: 12px;}
   .section08 {padding: 90px 0 100px;}
   .section08 h2 img {width: 60%; max-width: 300px;}
   .section08 .slider_area {margin: 15px 0 50px;}
