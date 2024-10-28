@@ -64,7 +64,7 @@ const localStorageInit = () => {
 };
 
 // const siteUrl = "https://metamonster-dev.github.io/krush-publishing";
-const siteUrl = "https://beerkrushcap.com";
+const siteUrl = "http://beerkrushcap.com";
 
 function pageInit() {
   const paramsCap = getParams()?.cap;
