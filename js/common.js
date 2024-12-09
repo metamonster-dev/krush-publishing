@@ -244,7 +244,7 @@ const sendApi = (data) => {
   return new Promise((resolve, reject) => {
     // 프로미스를 반환
     $.ajax({
-      url: "http://krush-alb-1650584371.ap-northeast-2.elb.amazonaws.com/api/data",
+      url: "https://api.beerkrushcap.com/api/data",
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify(data),
